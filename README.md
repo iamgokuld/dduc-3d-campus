@@ -39,7 +39,7 @@ Built with **Three.js, React Three Fiber aesthetics, GSAP ScrollTrigger, and Tai
 ### 5. Interactive UI & Admissions Engine
 - **Glassmorphic Floating HUD Navbar:** Quick links, official college crest, mode toggles, and Admissions portal CTAs.
 - **Free 3D Orbit Mode:** Disengages the scroll lock to allow full 360-degree orbit, pan, and zoom with Drei-style OrbitControls.
-- **Interactive CUET Cutoff & Merit Estimator:** Real-time eligibility calculator across DDUC's top programs (B.Sc. Hons Computer Science, B.Com Hons, BMS, Mathematics, Physics, Chemistry, English) with category filters (UR, OBC, SC, ST, EWS, PwD), score sliders, and confetti celebratory effects.
+- **Interactive CUET Cutoff & Merit Estimator:** Real-time eligibility calculator across DDUC's top programs (B.Sc. Hons Computer Science, B.Com Hons, BMS, Mathematics, Physics, Chemistry, English) with category filters (UR, OBC, SC, ST, EWS, PwD), score sliders, and instantaneous eligibility verdict analysis.
 - **Synthesized Ambient Audio Engine:** Web Audio API synthesizer creating soft, warm futuristic atmospheric chords and chime sound effects with zero external audio assets.
 
 ---

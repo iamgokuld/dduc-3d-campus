@@ -32,9 +32,6 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -134,17 +131,12 @@
           <i data-lucide="volume-x" id="audio-icon" class="w-4 h-4"></i>
         </button>
 
-        <!-- Calculate Cutoff Modal Trigger -->
-        <button id="open-calculator-btn" class="h-9 flex items-center gap-1.5 px-3.5 rounded-xl bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-semibold text-xs shadow-lg shadow-red-900/30 border border-red-500/40 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-400/40 cursor-pointer">
-          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+        <!-- Metallic Titanium CUET Cutoff Action Button -->
+        <button id="open-calculator-btn" title="Open CUET DU Merit & Cutoff Calculator" class="btn-metallic-titanium focus:outline-none focus:ring-2 focus:ring-slate-400/40">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span>
           <span>CUET Cutoff</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
         </button>
-
-        <!-- THAW Luxury Editorial Calculator Link -->
-        <a href="./calculator.html" class="h-9 hidden sm:flex items-center gap-1.5 px-3 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/80 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 font-mono text-xs shadow-lg shadow-cyan-950/30 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 cursor-pointer">
-          <span>// THAW SPA</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-        </a>
 
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" class="h-9 w-9 lg:hidden flex items-center justify-center rounded-xl bg-slate-900/80 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer">
@@ -161,13 +153,13 @@
       <a href="#placements" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Placements & Blueprint</a>
       <button id="open-tour-mobile-btn" class="text-left px-3 py-2 text-xs font-medium text-red-400 hover:bg-white/5 rounded-lg transition">360 Virtual Tour</button>
       <div class="pt-2 mt-1 border-t border-white/10 flex flex-col gap-2">
-        <a href="./calculator.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-mono text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900/80 rounded-xl border border-cyan-500/30 transition active:scale-95">
+        <button id="open-calculator-mobile-btn" class="btn-metallic-titanium w-full justify-between focus:outline-none focus:ring-2 focus:ring-slate-400/40">
           <span class="flex items-center gap-2">
-            <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400"></i>
-            <span>// THAW CUET Cutoff SPA</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span>
+            <span>CUET Cutoff</span>
           </span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-cyan-400"></i>
-        </a>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -490,9 +482,13 @@
         <!-- Injected via JS -->
       </div>
 
-      <div class="flex justify-end gap-3">
-        <button id="calc-confetti-btn" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition flex items-center gap-1.5">
-          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+      <div class="flex justify-between items-center gap-3">
+        <a href="./calculator.html" class="text-xs text-cyan-400 hover:text-cyan-300 font-mono flex items-center gap-1.5 transition">
+          <span>Open Dedicated Full SPA</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+        <button id="calc-eval-btn" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
+          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
           <span>Check Admission Feasibility</span>
         </button>
       </div>

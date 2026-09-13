@@ -564,11 +564,12 @@ function initModals() {
   // Calculator Modal Open/Close
   const calcModal = document.getElementById("calculator-modal");
   const openCalcBtn = document.getElementById("open-calculator-btn");
+  const openCalcMobileBtn = document.getElementById("open-calculator-mobile-btn");
   const openCalcCta = document.getElementById("open-calculator-cta");
   const heroCutoffBtn = document.getElementById("hero-cutoff-btn");
   const closeCalcBtn = document.getElementById("close-calc-modal-btn");
 
-  [openCalcBtn, openCalcCta, heroCutoffBtn].forEach((btn) => {
+  [openCalcBtn, openCalcMobileBtn, openCalcCta, heroCutoffBtn].forEach((btn) => {
     if (btn) {
       btn.addEventListener("click", () => {
         calcModal.classList.remove("hidden");
@@ -577,10 +578,45 @@ function initModals() {
     }
   });
 
-  closeCalcBtn.addEventListener("click", () => calcModal.classList.add("hidden"));
-  calcModal.addEventListener("click", (e) => {
-    if (e.target === calcModal) calcModal.classList.add("hidden");
-  });
+  // Pointer hover physics for metallic titanium button
+  if (openCalcBtn) {
+    openCalcBtn.addEventListener("pointermove", (e) => {
+      const rect = openCalcBtn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const tx = ((x - centerX) / centerX) * 4;
+      const ty = ((y - centerY) / centerY) * 3;
+      const rx = -((y - centerY) / centerY) * 6;
+      const ry = ((x - centerX) / centerX) * 6;
+
+      openCalcBtn.style.setProperty("--spec-x", `${(x / rect.width) * 100}%`);
+      openCalcBtn.style.setProperty("--spec-y", `${(y / rect.height) * 100}%`);
+      openCalcBtn.style.setProperty("--tx", `${tx.toFixed(2)}px`);
+      openCalcBtn.style.setProperty("--ty", `${ty.toFixed(2)}px`);
+      openCalcBtn.style.setProperty("--rx", `${rx.toFixed(2)}deg`);
+      openCalcBtn.style.setProperty("--ry", `${ry.toFixed(2)}deg`);
+    });
+
+    openCalcBtn.addEventListener("pointerleave", () => {
+      openCalcBtn.style.setProperty("--tx", "0px");
+      openCalcBtn.style.setProperty("--ty", "0px");
+      openCalcBtn.style.setProperty("--rx", "0deg");
+      openCalcBtn.style.setProperty("--ry", "0deg");
+      openCalcBtn.style.setProperty("--spec-x", "50%");
+      openCalcBtn.style.setProperty("--spec-y", "50%");
+    });
+  }
+
+  if (closeCalcBtn) {
+    closeCalcBtn.addEventListener("click", () => calcModal.classList.add("hidden"));
+  }
+  if (calcModal) {
+    calcModal.addEventListener("click", (e) => {
+      if (e.target === calcModal) calcModal.classList.add("hidden");
+    });
+  }
 }
 
 // 10. CUET Cutoff & Merit Calculator Logic
@@ -592,7 +628,7 @@ function initCalculator() {
   const courseSelect = document.getElementById("calc-course-select");
   const categoryContainer = document.getElementById("calc-category-tabs");
   const slider = document.getElementById("calc-score-slider");
-  const confettiBtn = document.getElementById("calc-confetti-btn");
+  const evalBtn = document.getElementById("calc-eval-btn") || document.getElementById("calc-confetti-btn");
 
   if (!courseSelect || !categoryContainer || !slider) return;
 
@@ -649,17 +685,15 @@ function initCalculator() {
     updateCalculatorView();
   });
 
-  // Confetti trigger
-  confettiBtn.addEventListener("click", () => {
-    const res = calculateEligibility(selectedCourseId, selectedCategory, userCUETScore);
-    if (res && res.diff >= 0 && window.confetti) {
-      window.confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-    }
-  });
+  // Clean admission feasibility evaluation trigger (zero celebration/confetti FX)
+  if (evalBtn) {
+    evalBtn.addEventListener("click", () => {
+      updateCalculatorView();
+      if (audioAmbience && audioAmbience.playChime) {
+        audioAmbience.playChime();
+      }
+    });
+  }
 
   updateCalculatorView();
 }
