@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deen Dayal Upadhyaya College | University of Delhi - 3D Campus Experience</title>
+  <meta name="description" content="Explore Deen Dayal Upadhyaya College (DDUC), University of Delhi, through an interactive, high-performance 3D architectural WebGL journey." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dduc: {
+              crimson: '#8B0000',
+              accent: '#991B1B',
+              light: '#DC2626',
+              gold: '#D97706',
+              navy: '#0F172A',
+              slate: '#1E293B',
+              cyan: '#38BDF8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-red-600 selection:text-white">
+
+  <!-- Architectural Loading Screen -->
+  <div id="loader-overlay">
+    <div class="relative flex flex-col items-center">
+      <div class="w-20 h-20 mb-6 rounded-2xl bg-gradient-to-tr from-red-800 to-red-600 flex items-center justify-center shadow-2xl shadow-red-900/50 border border-red-500/30 animate-pulse">
+        <i data-lucide="graduation-cap" class="w-10 h-10 text-white"></i>
+      </div>
+      <h2 class="text-xl font-bold tracking-widest text-white uppercase mb-1">Deen Dayal Upadhyaya College</h2>
+      <p class="text-xs text-slate-400 tracking-wider mb-6 font-mono">University of Delhi • Dwarka Campus</p>
+      
+      <!-- Progress Bar -->
+      <div class="w-64 h-1.5 bg-slate-800 rounded-full overflow-hidden mb-3 border border-slate-700/50">
+        <div id="loader-progress" class="h-full bg-gradient-to-r from-red-600 via-amber-500 to-cyan-400 w-0 transition-all duration-300"></div>
+      </div>
+      <p id="loader-status" class="text-xs text-slate-500 font-mono">Synthesizing 3D Architectural Geometry...</p>
+    </div>
+  </div>
+
+  <!-- 3D WebGL Canvas Layer -->
+  <canvas id="webgl-container"></canvas>
+
+  <!-- Free Orbit Mode Floating Banner -->
+  <div id="free-orbit-banner" class="hidden fixed top-28 sm:top-32 left-1/2 -translate-x-1/2 z-[60] glass-panel-cyan px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl sm:rounded-full flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3 border border-cyan-500/50 shadow-2xl shadow-cyan-950/70 ring-1 ring-cyan-400/30 backdrop-blur-2xl max-w-[92vw] sm:max-w-none text-center sm:text-left transition-all">
+    <div class="flex items-center gap-2">
+      <i data-lucide="compass" class="w-4 h-4 text-cyan-400 animate-spin"></i>
+      <span class="text-xs font-semibold text-cyan-200 uppercase tracking-wider font-mono">Free Orbit</span>
+    </div>
+    <span class="text-xs text-slate-300 font-medium">Drag to rotate • Scroll to zoom • Right-click to pan</span>
+    <button id="exit-orbit-btn" class="sm:ml-2 text-xs bg-cyan-600 hover:bg-cyan-500 active:scale-95 text-white px-3.5 py-1.5 rounded-full font-semibold transition shadow-md shadow-cyan-950/50 focus:outline-none focus:ring-2 focus:ring-cyan-300 cursor-pointer">
+      Exit to Guided Tour
+    </button>
+  </div>
+
+  <!-- 3D Hotspot Hover Tooltip (Positioned in Screen Space) -->
+  <div id="hotspot-tooltip" class="hotspot-tooltip hidden glass-panel px-4 py-3 rounded-xl border border-red-500/40 shadow-2xl max-w-xs pointer-events-none">
+    <div class="flex items-center gap-2 mb-1">
+      <span id="tooltip-category" class="text-[10px] uppercase font-bold tracking-wider text-red-400 px-1.5 py-0.5 rounded bg-red-950/60 border border-red-800/40"></span>
+      <span class="text-[10px] text-slate-400">Click to inspect</span>
+    </div>
+    <h4 id="tooltip-title" class="text-sm font-bold text-white mb-1"></h4>
+    <p id="tooltip-stats" class="text-xs text-slate-300 font-mono"></p>
+  </div>
+
+  <!-- Glassmorphic Top Floating HUD Navigation -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8 max-w-7xl mx-auto pointer-events-none">
+    <nav class="glass-panel rounded-2xl px-4 py-3 flex items-center justify-between pointer-events-auto border border-white/10 shadow-2xl">
+      <!-- DDUC Logo & Branding -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-800 to-red-600 flex items-center justify-center shadow-lg shadow-red-900/40 border border-red-500/30 group-hover:scale-105 transition">
+          <i data-lucide="building-2" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-bold tracking-tight text-white text-base leading-none">DDUC</span>
+            <span class="text-[10px] font-semibold text-red-400 px-1.5 py-0.5 rounded-full bg-red-950/70 border border-red-800/50">DU</span>
+          </div>
+          <span class="text-[11px] text-slate-400 font-medium">Deen Dayal Upadhyaya College</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-white/5">
+        <a href="#hero" class="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition">Home</a>
+        <a href="#academics" class="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition">Academics</a>
+        <a href="#facilities" class="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition">Campus & Labs</a>
+        <a href="#placements" class="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition">Placements</a>
+        <a href="https://dducollege.du.ac.in" target="_blank" rel="noreferrer" class="px-3.5 py-1.5 text-xs font-medium text-slate-300 hover:text-white rounded-lg hover:bg-white/5 transition flex items-center gap-1">
+          <span>Official Portal</span>
+          <i data-lucide="external-link" class="w-3 h-3 text-slate-400"></i>
+        </a>
+      </div>
+
+      <!-- Quick Action Controls & CTAs -->
+      <div class="flex items-center gap-2">
+        <!-- Blueprint Mode Toggle Switch -->
+        <button id="toggle-blueprint-btn" title="Toggle Architectural Wireframe Blueprint Mode" class="h-9 flex items-center gap-1.5 px-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-xs font-medium text-cyan-400 hover:border-cyan-500/50 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-400/30 cursor-pointer">
+          <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+          <span class="hidden sm:inline" id="blueprint-btn-text">Blueprint</span>
+        </button>
+
+        <!-- Free Orbit Camera Switch -->
+        <button id="toggle-orbit-btn" title="Toggle Free 360 3D Orbit Camera" class="h-9 flex items-center gap-1.5 px-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-xs font-medium text-slate-300 hover:text-white hover:border-slate-500 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-500/30 cursor-pointer">
+          <i data-lucide="orbit" class="w-3.5 h-3.5 text-red-400"></i>
+          <span class="hidden sm:inline">Free Orbit</span>
+        </button>
+
+        <!-- Ambient Audio Synthesizer Toggle -->
+        <button id="toggle-audio-btn" title="Ambient Soundscape" class="h-9 w-9 flex items-center justify-center rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-700/60 text-slate-400 hover:text-white transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-emerald-400/30 cursor-pointer">
+          <i data-lucide="volume-x" id="audio-icon" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Calculate Cutoff Modal Trigger -->
+        <button id="open-calculator-btn" class="h-9 flex items-center gap-1.5 px-3.5 rounded-xl bg-gradient-to-r from-red-700 to-red-600 hover:from-red-600 hover:to-red-500 text-white font-semibold text-xs shadow-lg shadow-red-900/30 border border-red-500/40 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-400/40 cursor-pointer">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+          <span>CUET Cutoff</span>
+        </button>
+
+        <!-- THAW Luxury Editorial Calculator Link -->
+        <a href="./calculator.html" class="h-9 hidden sm:flex items-center gap-1.5 px-3 rounded-xl bg-cyan-950/60 hover:bg-cyan-900/80 border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 font-mono text-xs shadow-lg shadow-cyan-950/30 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-cyan-400/40 cursor-pointer">
+          <span>// THAW SPA</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="h-9 w-9 lg:hidden flex items-center justify-center rounded-xl bg-slate-900/80 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer">
+          <i data-lucide="menu" class="w-4 h-4"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-dropdown" class="hidden mt-2 p-3 rounded-2xl glass-panel pointer-events-auto flex-col gap-2 lg:hidden border border-white/10 shadow-2xl backdrop-blur-2xl">
+      <a href="#hero" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Home</a>
+      <a href="#academics" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Academics & Departments</a>
+      <a href="#facilities" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Campus Life & Facilities</a>
+      <a href="#placements" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Placements & Blueprint</a>
+      <button id="open-tour-mobile-btn" class="text-left px-3 py-2 text-xs font-medium text-red-400 hover:bg-white/5 rounded-lg transition">360 Virtual Tour</button>
+      <div class="pt-2 mt-1 border-t border-white/10 flex flex-col gap-2">
+        <a href="./calculator.html" class="flex items-center justify-between px-3 py-2.5 text-xs font-mono text-cyan-300 bg-cyan-950/60 hover:bg-cyan-900/80 rounded-xl border border-cyan-500/30 transition active:scale-95">
+          <span class="flex items-center gap-2">
+            <i data-lucide="cpu" class="w-3.5 h-3.5 text-cyan-400"></i>
+            <span>// THAW CUET Cutoff SPA</span>
+          </span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-cyan-400"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Scrollable Storytelling Layer -->
+  <main id="scroll-container">
+
+    <!-- HERO SECTION (Isometric Wide Shot) -->
+    <section id="hero" class="scroll-section flex flex-col justify-center items-start pt-28 pb-20">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="max-w-2xl interactive-layer">
+          <!-- Institutional Credentials Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel-crimson border border-red-500/40 text-xs font-semibold text-red-300 mb-6 shadow-xl">
+            <span class="w-2 h-2 rounded-full bg-red-400 animate-ping"></span>
+            <span>NAAC 'A' Grade Accredited • NIRF Top Ranked College</span>
+          </div>
+
+          <!-- Hero Headline -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 leading-none">
+            Deen Dayal <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-red-200">
+              Upadhyaya
+            </span><br />
+            College
+          </h1>
+
+          <!-- Sanskrit Motto & Affiliation -->
+          <div class="flex items-center gap-3 mb-6">
+            <div class="h-8 w-1 bg-red-600 rounded-full"></div>
+            <div>
+              <p class="text-sm font-semibold text-amber-300/90 tracking-wide font-serif italic">
+                "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन"
+              </p>
+              <p class="text-xs text-slate-400">University of Delhi • Dwarka Sector-3, New Delhi</p>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="text-base text-slate-300/90 leading-relaxed mb-8 max-w-xl">
+            Immerse yourself in a state-of-the-art 7.7-acre net-zero green campus featuring iconic red-brick geometric architecture, cutting-edge computing laboratories, and high-impact placement records.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center gap-3 mb-10">
+            <a href="#academics" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-semibold text-sm shadow-xl shadow-red-950/60 transition flex items-center gap-2">
+              <span>Explore Academics</span>
+              <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+            </a>
+            <button id="hero-virtual-tour-btn" class="px-6 py-3 rounded-xl glass-panel hover:bg-slate-800 text-slate-200 font-semibold text-sm border border-white/10 transition flex items-center gap-2">
+              <i data-lucide="view" class="w-4 h-4 text-cyan-400"></i>
+              <span>360° Virtual Tour</span>
+            </button>
+            <button id="hero-cutoff-btn" class="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-amber-400 font-semibold text-sm border border-amber-500/30 transition flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>Admissions 2025</span>
+            </button>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="grid grid-cols-3 gap-3 max-w-lg p-3 rounded-2xl glass-panel border border-white/5">
+            <div class="text-center p-2">
+              <div class="text-xl sm:text-2xl font-black text-white">7.7</div>
+              <div class="text-[11px] text-slate-400 font-medium">Acres Green Campus</div>
+            </div>
+            <div class="text-center p-2 border-x border-white/10">
+              <div class="text-xl sm:text-2xl font-black text-red-400">₹21.5L</div>
+              <div class="text-[11px] text-slate-400 font-medium">Highest Package</div>
+            </div>
+            <div class="text-center p-2">
+              <div class="text-xl sm:text-2xl font-black text-cyan-400">250 kWp</div>
+              <div class="text-[11px] text-slate-400 font-medium">Rooftop Solar Grid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mouse Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400">
+        <span class="text-[11px] font-mono tracking-widest uppercase">Scroll To Explore Campus</span>
+        <div class="w-5 h-8 rounded-full border-2 border-slate-600 flex items-start justify-center p-1">
+          <div class="w-1 h-2 bg-red-500 rounded-full animate-bounce"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: ACADEMICS & DEPARTMENTS (Camera zooms into Academic Wing) -->
+    <section id="academics" class="scroll-section">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="max-w-3xl interactive-layer">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-950/60 border border-blue-500/40 text-xs font-semibold text-blue-400 mb-3">
+            <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+            <span>Academic Wings & Research Laboratories</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Curriculum Grounded in Innovation.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            The camera zooms into DDUC's multi-tiered Academic & Science block. Explore departments featuring specialized laboratories, faculty mentors, and high-impact career pathways.
+          </p>
+
+          <!-- Department Tab Selectors -->
+          <div id="dept-tabs-container" class="flex flex-wrap gap-2 mb-6">
+            <!-- Populated via JS -->
+          </div>
+
+          <!-- Dynamic Department Content Card -->
+          <div id="dept-card" class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 relative overflow-hidden">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CAMPUS LIFE & FACILITIES (Camera pans across Courtyard & Auditorium) -->
+    <section id="facilities" class="scroll-section">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="max-w-3xl ml-auto interactive-layer">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/60 border border-emerald-500/40 text-xs font-semibold text-emerald-400 mb-3">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+            <span>Interactive 3D Landmarks & Infrastructure</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Living Architecture in Motion.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+            The camera pans low across DDUC's central stepped amphitheater and acoustic auditorium. Click any facility card to command the 3D camera to fly directly to that architectural landmark!
+          </p>
+
+          <!-- Facilities Grid -->
+          <div id="facilities-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: ADMISSIONS, PLACEMENTS & BLUEPRINT (Camera pulls back into Wireframe Blueprint) -->
+    <section id="placements" class="scroll-section">
+      <div class="max-w-7xl mx-auto px-6 w-full">
+        <div class="max-w-4xl mx-auto interactive-layer">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-500/40 text-xs font-semibold text-cyan-400 mb-3">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+            <span>Top-Down Architectural Blueprint & Corporate Placements</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+            The Launchpad for Global Careers.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            As the camera elevates into a technical top-down wireframe blueprint, review DDUC's recruitment milestones and calculate your CUET admission cutoff probabilities.
+          </p>
+
+          <!-- Placement Metric Highlights -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+            <div class="glass-card p-5 rounded-2xl border border-cyan-500/30 text-center">
+              <div class="text-2xl sm:text-3xl font-black text-cyan-400 mb-1">₹21.5 LPA</div>
+              <div class="text-xs text-slate-300 font-medium">Highest CTC (DE Shaw)</div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl border border-white/10 text-center">
+              <div class="text-2xl sm:text-3xl font-black text-white mb-1">₹7.2 LPA</div>
+              <div class="text-xs text-slate-300 font-medium">Average Package</div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl border border-white/10 text-center">
+              <div class="text-2xl sm:text-3xl font-black text-red-400 mb-1">140+</div>
+              <div class="text-xs text-slate-300 font-medium">Corporate Recruiters</div>
+            </div>
+            <div class="glass-card p-5 rounded-2xl border border-white/10 text-center">
+              <div class="text-2xl sm:text-3xl font-black text-amber-400 mb-1">320+</div>
+              <div class="text-xs text-slate-300 font-medium">Placement Offers</div>
+            </div>
+          </div>
+
+          <!-- Recruiters Marquee Cards -->
+          <div class="glass-panel p-6 rounded-3xl border border-white/10 mb-8">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i data-lucide="briefcase" class="w-4 h-4 text-red-400"></i>
+                <span>Premier Recruitment Partners</span>
+              </h3>
+              <span class="text-xs text-slate-400">Session 2023-2025</span>
+            </div>
+            <div id="recruiters-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- Cutoff Calculator Banner CTA -->
+          <div class="glass-card p-8 rounded-3xl border border-red-500/30 bg-gradient-to-r from-red-950/40 via-slate-900/60 to-cyan-950/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold mb-2">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>Admissions Predictor 2025-26</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">Calculate Your DU CUET Cutoff Eligibility</h3>
+              <p class="text-xs text-slate-300 max-w-md leading-relaxed">
+                Enter your CUET percentile or raw score across Computer Science, BMS, B.Com (Hons), and Science streams to receive instant round-by-round allocation probabilities.
+              </p>
+            </div>
+            <button id="open-calculator-cta" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm shadow-xl shadow-red-900/50 whitespace-nowrap transition flex items-center gap-2">
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+              <span>Launch Calculator</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="interactive-layer bg-slate-950/90 border-t border-white/10 py-12 px-6">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl bg-red-700 flex items-center justify-center font-bold text-white">D</div>
+            <span class="font-bold text-base text-white">Deen Dayal Upadhyaya College</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Constituent College of University of Delhi. Recognized under Section 2(f) and 12(B) of the UGC Act, 1956.
+          </p>
+          <div class="text-xs text-slate-400">
+            Sector-3, Dwarka, New Delhi - 110078
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Quick Navigation</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#hero" class="hover:text-white transition">Home & Campus Overview</a></li>
+            <li><a href="#academics" class="hover:text-white transition">Departments & Laboratories</a></li>
+            <li><a href="#facilities" class="hover:text-white transition">Auditorium & Sports Arena</a></li>
+            <li><a href="#placements" class="hover:text-white transition">Placements & Corporate Partners</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">Accreditation & Portals</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><span class="text-emerald-400 font-medium">NAAC Grade:</span> 'A' Grade (Cycle 2)</li>
+            <li><span class="text-cyan-400 font-medium">NIRF Ranking:</span> Top 30 Colleges in India</li>
+            <li><a href="https://admission.uod.ac.in" target="_blank" rel="noreferrer" class="hover:text-white transition flex items-center gap-1"><span>DU CSAS Portal</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+            <li><a href="https://dducollege.du.ac.in" target="_blank" rel="noreferrer" class="hover:text-white transition flex items-center gap-1"><span>Official DDUC Website</span> <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">3D Campus Experience</h4>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            Engineered with Three.js, GSAP ScrollTrigger, and WebGL shader architecture. Designed for 60 FPS performance.
+          </p>
+          <button id="reset-view-btn" class="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 border border-slate-700 transition">
+            Reset Camera to Beginning
+          </button>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <div>© 2025 Deen Dayal Upadhyaya College, University of Delhi. All rights reserved.</div>
+        <div class="flex gap-4 font-mono">
+          <span>WebGL 2.0 Enabled</span>
+          <span>•</span>
+          <span>Interactive 3D Canvas</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- MODAL: CUET CUTOFF & ELIGIBILITY CALCULATOR -->
+  <div id="calculator-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <!-- Close Button -->
+      <button id="close-calc-modal-btn" class="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white">
+          <i data-lucide="calculator" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white leading-tight">CUET Merit & Cutoff Estimator</h3>
+          <p class="text-xs text-slate-400">Deen Dayal Upadhyaya College • University of Delhi</p>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-300 mb-6 leading-relaxed">
+        Select your desired degree program, reservation category, and CUET normalized score to calculate your allocation probabilities based on previous CSAS merit rounds.
+      </p>
+
+      <!-- Calculator Form -->
+      <div class="space-y-4 mb-6">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Select Course / Program</label>
+          <select id="calc-course-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Admission Category</label>
+          <div id="calc-category-tabs" class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+            <!-- Tabs populated via JS -->
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-1.5">
+            <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Your CUET Score</label>
+            <span id="calc-score-display" class="text-xs font-mono font-bold text-red-400">710 / 800</span>
+          </div>
+          <input type="range" id="calc-score-slider" min="200" max="800" value="710" step="1" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
+          <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+            <span>200</span>
+            <span>Target Threshold</span>
+            <span id="calc-max-label">800</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Result Card -->
+      <div id="calc-result-box" class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 mb-6">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="flex justify-end gap-3">
+        <button id="calc-confetti-btn" class="px-5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold transition flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Check Admission Feasibility</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: 360 VIRTUAL TOUR & LANDMARK DETAIL -->
+  <div id="tour-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button id="close-tour-modal-btn" class="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div id="tour-modal-content">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Standard W3C Import Map for Three.js & Addons -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- Main JavaScript Application Module -->
+  <script type="module" src="./js/app.js"></script>
+
+  <!-- Lucide Icons Initialize -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>

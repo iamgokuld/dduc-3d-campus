@@ -1,0 +1,152 @@
+{
+  "B.A. (Hons.) English": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "round1": { "UR": 687.6752, "OBC": 554.5891, "SC": 516.0762, "ST": 482.1582, "EWS": 566.1727, "PwBD": 168.0759, "KM": null, "SGC": 680.2111, "Orphan_F": 378.244, "Orphan_M": null },
+    "round2": { "UR": 647.3307, "OBC": 506.807, "SC": 486.8569, "ST": 425.0176, "EWS": 507.887, "PwBD": 436.7523, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.A. Program (Economics + History)": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "round1": { "UR": 668.5211, "OBC": 552.8469, "SC": 467.0554, "ST": 444.0981, "EWS": 543.4787, "PwBD": null, "KM": null, "SGC": 664.897, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 627.3321, "OBC": 479.1018, "SC": 392.5059, "ST": 311.3822, "EWS": 496.7544, "PwBD": null, "KM": null, "SGC": 610.2995, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.A. Program (Economics + Political Science)": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "round1": { "UR": 692.7097, "OBC": 583.7847, "SC": 478.3405, "ST": 497.5373, "EWS": 585.759, "PwBD": 176.19, "KM": null, "SGC": 676.4996, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 676.4996, "OBC": 523.827, "SC": 444.8709, "ST": 407.2019, "EWS": 545.3888, "PwBD": null, "KM": null, "SGC": 630.2444, "Orphan_F": null, "Orphan_M": null },
+    "spot": { "SC": 211.2039, "EWS": 299.6905 }
+  },
+  "B.A. Program (History + Political Science)": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "round1": { "UR": 694.59, "OBC": 599.5349, "SC": 537.2999, "ST": 533.9522, "EWS": 583.0922, "PwBD": 240.828, "KM": null, "SGC": 691.7662, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 673.4302, "OBC": 529.6437, "SC": 481.9443, "ST": 440.8655, "EWS": 508.9783, "PwBD": 437.9398, "KM": null, "SGC": 622.7749, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Com. (Hons.)": {
+    "hasOptions": true,
+    "options": [
+      { "id": "opt1", "label": "Option 1: 1 Language + Mathematics + 2 Domains", "countedSubjects": 4, "maxMarks": 1000 },
+      { "id": "opt2", "label": "Option 2: 1 Language + Accountancy + 2 Domains", "countedSubjects": 4, "maxMarks": 1000 }
+    ],
+    "round1": { "UR": 783.7185, "OBC": 673.8708, "SC": 578.4182, "ST": 424.0942, "EWS": 724.4292, "PwBD": 167.4098, "KM": null, "SGC": 772.2324, "Orphan_F": 493.0604, "Orphan_M": 425.1269 },
+    "round2": { "UR": 763.2875, "OBC": 645.5148, "SC": 550.4073, "ST": 327.0634, "EWS": 699.259, "PwBD": 471.6122, "KM": null, "SGC": 746.1991, "Orphan_F": 493.0604, "Orphan_M": null },
+    "spot": { "ST": 340.2414, "KM": 415.2524, "Orphan_F": 505.8596 }
+  },
+  "B.Sc. (Hons.) Botany": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Chemistry", "Biology/Biotechnology"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 566.2595, "OBC": 513.5576, "SC": 422.3603, "ST": 391.9222, "EWS": 514.255, "PwBD": 192.9716, "KM": null, "SGC": 554.5413, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 519.1073, "OBC": 457.9999, "SC": 377.9804, "ST": 295.9419, "EWS": 453.082, "PwBD": null, "KM": null, "SGC": 506.5738, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Chemistry": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Chemistry", "Mathematics"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 380.1503, "OBC": 311.6665, "SC": 216.0778, "ST": 88.2204, "EWS": 324.5195, "PwBD": null, "KM": null, "SGC": 361.0647, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 316.2266, "OBC": 227.0829, "SC": 139.1374, "ST": 101.4051, "EWS": 239.8241, "PwBD": null, "KM": null, "SGC": 313.592, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Computer Science": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "subjects": ["Language (List A)", "Mathematics", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+    "round1": { "UR": 653.7045, "OBC": 577.7064, "SC": 501.2622, "ST": 400.9177, "EWS": 604.0946, "PwBD": 164.9925, "KM": 301.7816, "SGC": 653.5215, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 619.3906, "OBC": 516.9896, "SC": 431.0844, "ST": 325.5339, "EWS": 527.6736, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Electronics": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Mathematics", "Chemistry or Computer Science"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 353.9193, "OBC": 287.7856, "SC": 212.9615, "ST": 123.7415, "EWS": 301.0279, "PwBD": null, "KM": null, "SGC": 329.1864, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 297.3554, "OBC": 212.7542, "SC": 134.6306, "ST": 125.9771, "EWS": 220.2862, "PwBD": null, "KM": null, "SGC": 278.3772, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Mathematics": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "subjects": ["Language (List A)", "Mathematics", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+    "round1": { "UR": 604.6684, "OBC": 483.1077, "SC": 367.0198, "ST": 166.2977, "EWS": 497.6818, "PwBD": null, "KM": null, "SGC": 584.5448, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 553.8831, "OBC": 403.2708, "SC": 276.0828, "ST": 129.9848, "EWS": 437.3109, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Physics": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Chemistry", "Mathematics"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 388.5576, "OBC": 307.9047, "SC": 221.3548, "ST": 49.547, "EWS": 320.8086, "PwBD": null, "KM": null, "SGC": 376.0837, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 330.5544, "OBC": 229.7286, "SC": 131.8528, "ST": 101.5588, "EWS": 239.6542, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Hons.) Zoology": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Chemistry", "Biology/Biotechnology"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 595.071, "OBC": 544.7799, "SC": 502.5483, "ST": 432.7086, "EWS": 550.6781, "PwBD": 138.9165, "KM": null, "SGC": 589.1932, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 539.3187, "OBC": 482.5264, "SC": 398.6575, "ST": 354.4592, "EWS": 476.3597, "PwBD": null, "KM": null, "SGC": 535.8374, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Prog.) Life Science": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Chemistry", "Biology"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 574.9848, "OBC": 533.7616, "SC": 465.6472, "ST": 395.8176, "EWS": 517.556, "PwBD": null, "KM": null, "SGC": 557.5782, "Orphan_F": 169.2685, "Orphan_M": 190.889 },
+    "round2": { "UR": 534.0718, "OBC": 473.8372, "SC": 400.7825, "ST": 299.7792, "EWS": 467.977, "PwBD": null, "KM": null, "SGC": 513.1888, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "B.Sc. (Prog.) Mathematical Sciences": {
+    "countedSubjects": 4,
+    "maxMarks": 1000,
+    "subjects": ["Language (List A)", "Mathematics", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+    "round1": { "UR": 568.4292, "OBC": 434.0923, "SC": 336.0674, "ST": 182.6231, "EWS": 443.397, "PwBD": null, "KM": 78.1314, "SGC": 553.337, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 506.7486, "OBC": 348.3756, "SC": 252.9239, "ST": null, "EWS": 382.433, "PwBD": null, "KM": null, "SGC": 492.3568, "Orphan_F": null, "Orphan_M": null },
+    "spot": { "KM": 226.4949 }
+  },
+  "B.Sc. (Prog.) Physical Science with Chemistry": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Mathematics", "Chemistry"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 315.3041, "OBC": 249.5544, "SC": 158.9899, "ST": null, "EWS": 249.8672, "PwBD": null, "KM": null, "SGC": 291.6919, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 261.2387, "OBC": 176.9676, "SC": 55.2732, "ST": null, "EWS": 173.8024, "PwBD": null, "KM": null, "SGC": 219.1856, "Orphan_F": null, "Orphan_M": null },
+    "spot": { "SC": 273.7156 }
+  },
+  "B.Sc. (Prog.) Physical Science with Computer Science/Informatics Practices": {
+    "isScienceDomainMerit": true,
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Physics", "Mathematics", "Computer Science/IP"],
+    "requiresLanguageQualifying": true,
+    "round1": { "UR": 385.2533, "OBC": 317.2849, "SC": 231.6303, "ST": 112.14, "EWS": 344.8558, "PwBD": null, "KM": null, "SGC": 341.3855, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 343.2776, "OBC": 263.8057, "SC": 172.6982, "ST": 98.035, "EWS": 262.2446, "PwBD": null, "KM": null, "SGC": 295.4733, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  },
+  "Bachelor of Management Studies (BMS)": {
+    "countedSubjects": 3,
+    "maxMarks": 750,
+    "subjects": ["Any 1 Language (List A)", "Mathematics/Applied Mathematics", "General Test (Section III)"],
+    "round1": { "UR": 730.2847, "OBC": 595.2707, "SC": 526.9088, "ST": 386.1926, "EWS": 656.2943, "PwBD": 447.3425, "KM": null, "SGC": 698.8001, "Orphan_F": null, "Orphan_M": null },
+    "round2": { "UR": 715.2311, "OBC": 580.6857, "SC": 500.2312, "ST": 219.0088, "EWS": 649.4984, "PwBD": 447.2696, "KM": null, "SGC": 690.8775, "Orphan_F": null, "Orphan_M": null },
+    "spot": {}
+  }
+}

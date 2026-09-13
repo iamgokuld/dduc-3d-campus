@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CUET DU Merit & Cutoff Telemetry // DDUC 2026</title>
+  <meta name="description" content="THAW Luxury Editorial inspired CUET DU Merit & Cutoff Calculator exclusively for Deen Dayal Upadhyaya College (University of Delhi)." />
+
+  <!-- Google Fonts: Editorial Serif, High-Contrast Sans, and Monospaced Telemetry -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,700&family=Cinzel:wght@400;600;700;800;900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            void: {
+              950: '#060709',
+              900: '#08090C',
+              850: '#0E1015',
+              800: '#151821',
+              700: '#1F2430'
+            },
+            ice: {
+              cyan: '#67E8F9',
+              glow: '#22D3EE',
+              white: '#F8FAFC',
+              frost: '#94A3B8'
+            },
+            status: {
+              green: '#34D399',
+              emerald: '#10B981',
+              amber: '#FBBF24',
+              red: '#F87171',
+              bronze: '#A39E93'
+            }
+          },
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- React 18 & ReactDOM 18 UMD (High availability with primary & fallback CDNs) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- HTM (Hyperscript Tagged Markup) for React - Official UMD CDN with embedded zero-dependency fallback -->
+  <script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"></script>
+  <script>
+    if (typeof window.htm !== 'function') {
+      !function(n,e){"object"==typeof exports&&"undefined"!=typeof module?module.exports=e():"function"==typeof define&&define.amd?define(e):n.htm=e()}(this,function(){var n=function(e,t,u,s){var r;t[0]=0;for(var p=1;p<t.length;p++){var h=t[p++],o=t[p]?(t[0]|=h?1:2,u[t[p++]]):t[++p];3===h?s[0]=o:4===h?s[1]=Object.assign(s[1]||{},o):5===h?(s[1]=s[1]||{})[t[++p]]=o:6===h?s[1][t[++p]]+=o+"":h?(r=e.apply(o,n(e,o,u,["",null])),s.push(r),o[0]?t[0]|=2:(t[p-2]=0,t[p]=r)):s.push(o)}return s},e=new Map;return function(t){var u=e.get(this);return u||(u=new Map,e.set(this,u)),(u=n(this,u.get(t)||(u.set(t,u=function(n){for(var e,t,u=1,s="",r="",p=[0],h=function(n){1===u&&(n||(s=s.replace(/^\s*\n\s*|\s*\n\s*$/g,"")))?p.push(0,n,s):3===u&&(n||s)?(p.push(3,n,s),u=2):2===u&&"..."===s&&n?p.push(4,n,0):2===u&&s&&!n?p.push(5,0,!0,s):u>=5&&((s||!n&&5===u)&&(p.push(u,0,s,t),u=6),n&&(p.push(u,n,0,t),u=6)),s=""},o=0;o<n.length;o++){o&&(1===u&&h(),h(o));for(var f=0;f<n[o].length;f++)e=n[o][f],1===u?"<"===e?(h(),p=[p],u=3):s+=e:4===u?"--"===s&&">"===e?(u=1,s=""):s=e+s[0]:r?e===r?r="":s+=e:'"'===e||"'"===e?r=e:">"===e?(h(),u=1):u&&("="===e?(u=5,t=s,s=""):"/"===e&&(u<5||">"===n[o][f+1])?(h(),3===u&&(p=p[0]),u=p,(p=p[0]).push(2,0,u),u=0):" "===e||"\t"===e||"\n"===e||"\r"===e?(h(),u=2):s+=e),3===u&&"!--"===s&&(u=4,p=p[0])}return h(),p}(t)),u),arguments,[])).length>1?u:u[0]}});
+    }
+    // Bind HTM directly to React.createElement
+    window.html = (typeof window.htm === 'function' && window.React) ? window.htm.bind(React.createElement) : null;
+  </script>
+
+  <style>
+    /* THAW Aesthetic Glass & Organic Frost Styling */
+    body {
+      background-color: #08090C;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      selection-background-color: #67E8F9;
+      selection-color: #08090C;
+    }
+
+    ::selection {
+      background: #67E8F9;
+      color: #08090C;
+    }
+
+    /* Custom Sleek Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08090C;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1F2430;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #67E8F9;
+    }
+
+    .thaw-glass {
+      background: rgba(255, 255, 255, 0.025);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .thaw-glass-card {
+      background: rgba(14, 16, 21, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .thaw-glass-card:hover {
+      border-color: rgba(103, 232, 249, 0.25);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(103, 232, 249, 0.05);
+    }
+
+    .thaw-glow-cyan {
+      box-shadow: 0 0 35px -5px rgba(103, 232, 249, 0.25);
+    }
+
+    .thaw-glow-green {
+      box-shadow: 0 0 35px -5px rgba(52, 211, 153, 0.3);
+    }
+
+    .thaw-glow-red {
+      box-shadow: 0 0 35px -5px rgba(248, 113, 113, 0.3);
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    input[type=range]:focus {
+      outline: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: background 0.2s ease;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -6px;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #F8FAFC;
+      border: 2px solid #67E8F9;
+      box-shadow: 0 0 12px rgba(103, 232, 249, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.25);
+      box-shadow: 0 0 20px rgba(103, 232, 249, 0.9);
+    }
+
+    /* ==========================================================================
+       LIQUID SILVER / POLISHED CHROME & FROSTED PLATINUM EDITORIAL HEADLINE
+       ========================================================================== */
+    .liquid-header-wrapper {
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      --mouse-x: 50%;
+      --mouse-y: 50%;
+      --spec-x: 50%;
+      --spec-y: 38%;
+      --spec-rot: 0deg;
+      --spec2-x: 35%;
+      --spec2-y: 65%;
+    }
+
+    /* Telemetry Tag at Top */
+    .telemetry-tag-glowing {
+      letter-spacing: 0.16em;
+      color: #CBD5E1;
+      text-shadow: 0 0 12px rgba(248, 250, 252, 0.35), 0 0 24px rgba(203, 213, 225, 0.18);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .telemetry-tag-dot {
+      color: #94A3B8;
+      text-shadow: 0 0 8px rgba(148, 163, 184, 0.5);
+    }
+
+    /* Ambient Diffused Platinum Glow Layer behind text */
+    .liquid-ambient-glow {
+      position: absolute;
+      inset: -30px;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(44px);
+      opacity: 0.5;
+      overflow: visible;
+      transition: opacity 0.5s ease;
+    }
+
+    .ambient-glow-blob {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: transform;
+      mix-blend-mode: screen;
+    }
+
+    #glow-blob-1 {
+      width: 320px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(203, 213, 225, 0.07) 45%, transparent 70%);
+    }
+
+    #glow-blob-2 {
+      width: 340px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(226, 232, 240, 0.2) 0%, rgba(148, 163, 184, 0.05) 50%, transparent 70%);
+    }
+
+    #glow-blob-3 {
+      width: 220px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.28) 0%, rgba(241, 245, 249, 0.09) 40%, transparent 65%);
+    }
+
+    #glow-blob-4 {
+      width: 260px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(203, 213, 225, 0.2) 0%, rgba(100, 116, 139, 0.05) 50%, transparent 70%);
+    }
+
+    /* Multi-layered Liquid Masked Headline Typography */
+    .liquid-headline-container {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Continuous Specular Shimmer / Diagonal Light Sweep Animation */
+    @keyframes metallicSheenSweep {
+      0% {
+        background-position: -200% 0, 0 0, 0 0, 0 0;
+      }
+      50% {
+        background-position: 250% 0, 0 0, 0 0, 0 0;
+      }
+      100% {
+        background-position: 250% 0, 0 0, 0 0, 0 0;
+      }
+    }
+
+    /* The Main Liquid Chrome / Polished Silver Text Element */
+    .liquid-chrome-text,
+    .liquid-fill-text {
+      background-image:
+        /* Layer 1: Diagonal Light Sweep Shimmer Beam */
+        linear-gradient(
+          115deg,
+          transparent 0%,
+          transparent 38%,
+          rgba(255, 255, 255, 0.45) 47%,
+          rgba(255, 255, 255, 0.95) 50%,
+          rgba(255, 255, 255, 0.45) 53%,
+          transparent 62%,
+          transparent 100%
+        ),
+        /* Layer 2: Interactive Specular Highlight 1 (Cursor-reactive) */
+        radial-gradient(
+          ellipse 380px 190px at var(--spec-x, 50%) var(--spec-y, 38%),
+          #FFFFFF 0%,
+          rgba(248, 250, 252, 0.95) 20%,
+          rgba(226, 232, 240, 0.5) 45%,
+          rgba(203, 213, 225, 0.15) 65%,
+          transparent 78%
+        ),
+        /* Layer 3: Interactive Specular Highlight 2 (Studio horizon reflection) */
+        radial-gradient(
+          ellipse 300px 150px at var(--spec2-x, 35%) var(--spec2-y, 65%),
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(241, 245, 249, 0.5) 30%,
+          rgba(148, 163, 184, 0.2) 60%,
+          transparent 75%
+        ),
+        /* Layer 4: Multi-stop Polished Liquid Chrome & Silver Metallic Base */
+        linear-gradient(
+          calc(120deg + var(--spec-rot, 0deg)),
+          #1E293B 0%,
+          #334155 8%,
+          #64748B 18%,
+          #CBD5E1 28%,
+          #FFFFFF 38%,
+          #F1F5F9 45%,
+          #94A3B8 52%,
+          #475569 62%,
+          #CBD5E1 72%,
+          #FFFFFF 82%,
+          #E2E8F0 90%,
+          #334155 100%
+        );
+      background-size: 260% 100%, 100% 100%, 100% 100%, 100% 100%;
+      background-repeat: no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      will-change: background-position, filter;
+      filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.15)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+      display: inline-block;
+      animation: metallicSheenSweep 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    /* Editorial Headline Line 1 */
+    .headline-line-1 {
+      font-family: 'Bodoni Moda', 'Playfair Display', 'Cinzel', serif;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 0.94;
+    }
+
+    /* Editorial Headline Line 2 */
+    .headline-line-2 {
+      font-family: 'Bodoni Moda', 'Playfair Display', 'Cinzel', serif;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+    }
+
+    /* '&' Italic Display Serif in Pale Ice-Silver with Specular Tint */
+    .headline-ampersand {
+      font-family: 'Instrument Serif', 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #E0F2FE;
+      -webkit-text-fill-color: #E0F2FE;
+      text-shadow: 0 0 16px rgba(224, 242, 254, 0.6), 0 0 28px rgba(255, 255, 255, 0.25);
+      margin-right: 0.08em;
+      display: inline-block;
+      transform: translateY(-2px);
+    }
+
+    /* 'cutoff' Lowercase Italic Serif in Muted Satin Champagne/Platinum */
+    .headline-cutoff {
+      font-family: 'Instrument Serif', 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 400;
+      text-transform: lowercase;
+      color: #CBD5E1;
+      -webkit-text-fill-color: #CBD5E1;
+      text-shadow: 0 0 14px rgba(203, 213, 225, 0.35);
+      margin-right: 0.18em;
+      letter-spacing: -0.01em;
+      display: inline-block;
+    }
+
+    /* 'CALCULATOR' Uppercase Display Serif */
+    .headline-calculator {
+      font-family: 'Bodoni Moda', 'Playfair Display', 'Cinzel', serif;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    /* Subtle frosted platinum pulse */
+    @keyframes liquidSheenPulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.15)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+      }
+      50% {
+        filter: drop-shadow(0 0 24px rgba(255, 255, 255, 0.28)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
+      }
+    }
+
+    .liquid-sheen-active {
+      animation: liquidSheenPulse 7s ease-in-out infinite;
+    }
+
+    /* ==========================================================================
+       CURSOR-REACTIVE SUBJECT SPOTLIGHT & 3D MAGNETIC TILT COMPONENT
+       ========================================================================== */
+    .subject-selector-dropdown {
+      animation: dropdownReveal 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: top center;
+    }
+
+    @keyframes dropdownReveal {
+      from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.985);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .cursor-spotlight-card {
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      will-change: transform, box-shadow;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Dynamic Radial Glow beneath cursor */
+    .cursor-spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: radial-gradient(
+        220px circle at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+        rgba(103, 232, 249, 0.16),
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+
+    .cursor-spotlight-card:hover::before {
+      opacity: 1;
+    }
+
+    /* Illuminated edge/border glow near pointer */
+    .cursor-spotlight-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      pointer-events: none;
+      padding: 1px;
+      background: radial-gradient(
+        240px circle at var(--spotlight-x, -999px) var(--spotlight-y, -999px),
+        rgba(103, 232, 249, 0.45),
+        transparent 65%
+      );
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2;
+    }
+
+    .cursor-spotlight-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Staggered entrance animation for cards */
+    @keyframes subjectCardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .stagger-card {
+      animation: subjectCardEntrance 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation-delay: calc(var(--item-idx, 0) * 22ms);
+      will-change: transform, opacity;
+    }
+
+    /* Active click compression */
+    .cursor-spotlight-card:active {
+      transform: scale(0.98) !important;
+      transition: transform 0.08s ease-out !important;
+    }
+
+    /* Accessibility: Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .cursor-spotlight-card {
+        transform: none !important;
+        transition: border-color 0.15s ease, background-color 0.15s ease !important;
+      }
+      .stagger-card,
+      .subject-selector-dropdown {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .cursor-spotlight-card::before,
+      .cursor-spotlight-card::after {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-void-950 text-ice-white antialiased relative selection:bg-ice-cyan selection:text-void-950">
+
+  <!-- Living Refractive Canvas Background -->
+  <canvas id="ice-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+  <!-- React Mount Target Container with Elegant Initial Loading State -->
+  <div id="root" class="relative z-10 min-h-screen">
+    <div class="min-h-screen flex flex-col items-center justify-center p-6 text-center">
+      <div class="w-16 h-16 mb-6 rounded-2xl bg-void-900 border border-ice-cyan/30 flex items-center justify-center text-ice-cyan animate-pulse shadow-2xl shadow-ice-cyan/10">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+      </div>
+      <div class="font-mono text-xs text-ice-cyan tracking-widest uppercase mb-2">// ADMISSION_TELEMETRY_ENGINE</div>
+      <h2 class="text-2xl sm:text-3xl font-display font-bold text-white uppercase tracking-wider mb-2">Deen Dayal Upadhyaya College</h2>
+      <p class="text-xs text-slate-400 font-mono tracking-wider mb-6">Synthesizing 2026 DU CSAS Cutoff Matrix...</p>
+      <div class="w-48 h-1 bg-void-800 rounded-full overflow-hidden border border-white/10">
+        <div class="w-full h-full bg-gradient-to-r from-ice-cyan via-status-green to-ice-white animate-pulse"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fallback Error Container (hidden by default) -->
+  <div id="error-fallback" class="hidden fixed inset-0 z-50 bg-void-950 flex items-center justify-center p-6">
+    <div class="thaw-glass max-w-md w-full rounded-3xl p-8 border border-status-red/40 text-center shadow-2xl">
+      <div class="w-12 h-12 mx-auto mb-4 rounded-xl bg-status-red/20 border border-status-red/40 flex items-center justify-center text-status-red">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+      <h3 class="text-xl font-display font-bold text-white mb-2">Telemetry Initialization Issue</h3>
+      <p id="error-message" class="text-xs font-mono text-status-red bg-void-900/80 p-3 rounded-xl border border-status-red/30 mb-6 text-left overflow-auto max-h-36">
+        Initializing...
+      </p>
+      <div class="flex gap-3 justify-center">
+        <button onclick="window.location.reload()" class="px-5 py-2.5 rounded-xl bg-white text-void-950 font-mono text-xs font-bold hover:bg-slate-200 transition">
+          Reload Engine
+        </button>
+        <a href="./index.html" class="px-5 py-2.5 rounded-xl bg-white/10 text-white font-mono text-xs font-semibold hover:bg-white/20 transition">
+          Campus Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ambient Ice Refraction Canvas Script -->
+  <script>
+    (function initIceCanvas() {
+      const canvas = document.getElementById('ice-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let mouseX = 0, mouseY = 0;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      window.addEventListener('pointermove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      const orbs = [
+        { x: width * 0.2, y: height * 0.25, r: 280, color: 'rgba(103, 232, 249, 0.035)', speedX: 0.0006, speedY: 0.0008, phase: 0 },
+        { x: width * 0.8, y: height * 0.35, r: 350, color: 'rgba(56, 189, 248, 0.03)', speedX: 0.0005, speedY: 0.0004, phase: 2 },
+        { x: width * 0.5, y: height * 0.8, r: 420, color: 'rgba(34, 211, 238, 0.025)', speedX: 0.0007, speedY: 0.0006, phase: 4 }
+      ];
+
+      const particles = [];
+      for (let i = 0; i < 40; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          size: Math.random() * 1.5 + 0.5,
+          alpha: Math.random() * 0.4 + 0.1,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: -Math.random() * 0.25 - 0.05
+        });
+      }
+
+      function draw(time) {
+        ctx.clearRect(0, 0, width, height);
+
+        orbs.forEach(orb => {
+          const offsetX = Math.sin(time * orb.speedX + orb.phase) * 80 + (mouseX - width / 2) * 0.03;
+          const offsetY = Math.cos(time * orb.speedY + orb.phase) * 60 + (mouseY - height / 2) * 0.03;
+          
+          const grad = ctx.createRadialGradient(
+            orb.x + offsetX, orb.y + offsetY, 0,
+            orb.x + offsetX, orb.y + offsetY, orb.r
+          );
+          grad.addColorStop(0, orb.color);
+          grad.addColorStop(1, 'transparent');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(orb.x + offsetX, orb.y + offsetY, orb.r, 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        ctx.fillStyle = '#67E8F9';
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.y < 0) {
+            p.y = height;
+            p.x = Math.random() * width;
+          }
+          if (p.x < 0) p.x = width;
+          if (p.x > width) p.x = 0;
+
+          ctx.globalAlpha = p.alpha;
+          ctx.fillRect(p.x, p.y, p.size, p.size);
+        });
+        ctx.globalAlpha = 1.0;
+
+        requestAnimationFrame(draw);
+      }
+      requestAnimationFrame(draw);
+    })();
+  </script>
+
+  <!-- Global Window Error Handler to prevent silent blank screens -->
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error("Global Telemetry Caught Error:", e.error || e.message);
+      const errBox = document.getElementById('error-fallback');
+      const errMsg = document.getElementById('error-message');
+      if (errBox && errMsg) {
+        errMsg.textContent = (e.error && e.error.stack) ? e.error.stack : (e.message || "Unknown runtime exception during engine boot.");
+        errBox.classList.remove('hidden');
+      }
+    });
+  </script>
+
+  <!-- Native React SPA Application Script using HTM tagged template parser -->
+  <script>
+    (function runSpa() {
+      // Fallback tagged template builder if htm fails
+      const html = window.html || function(strings, ...values) {
+        // Simple fallback to React.createElement
+        return React.createElement('div', { className: 'p-4 text-white' }, 'Initializing React Engine...');
+      };
+
+      const { useState, useMemo, useEffect } = React;
+
+      // 2026 DDUC Cutoff Dataset
+      const DDUC_CUTOFF_DATA = {
+        "B.A. (Hons.) English": {
+          stream: "Humanities & Arts",
+          hasOptions: false,
+          options: [],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          subjects: ["English (List A)", "Domain Subject 1", "Domain Subject 2", "Domain Subject 3"],
+          requiresLanguageQualifying: false,
+          round1: { "UR": 687.6752, "OBC": 554.5891, "SC": 516.0762, "ST": 482.1582, "EWS": 566.1727, "PwBD": 168.0759, "KM": null, "SGC": 680.2111, "Orphan_F": 378.244, "Orphan_M": null },
+          round2: { "UR": 647.3307, "OBC": 506.807, "SC": 486.8569, "ST": 425.0176, "EWS": 507.887, "PwBD": 436.7523, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.A. Program (Economics + History)": {
+          stream: "Humanities & Arts",
+          hasOptions: true,
+          options: [
+            { id: "opt1", label: "Option 1: 1 Language + 3 Domain Subjects", countedSubjects: 4, maxMarks: 1000, subjects: ["Language (List A)", "Economics", "History", "Domain Subject 3"] },
+            { id: "opt2", label: "Option 2: 1 Language + 1 Domain + General Test", countedSubjects: 3, maxMarks: 750, subjects: ["Language (List A)", "Economics or History", "General Test (Section III)"] }
+          ],
+          subjects: ["Language (List A)", "Economics", "History", "Domain Subject 3"],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          requiresLanguageQualifying: false,
+          round1: { "UR": 668.5211, "OBC": 552.8469, "SC": 467.0554, "ST": 444.0981, "EWS": 543.4787, "PwBD": null, "KM": null, "SGC": 664.897, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 627.3321, "OBC": 479.1018, "SC": 392.5059, "ST": 311.3822, "EWS": 496.7544, "PwBD": null, "KM": null, "SGC": 610.2995, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.A. Program (Economics + Political Science)": {
+          stream: "Humanities & Arts",
+          hasOptions: true,
+          options: [
+            { id: "opt1", label: "Option 1: 1 Language + 3 Domain Subjects", countedSubjects: 4, maxMarks: 1000, subjects: ["Language (List A)", "Economics", "Political Science", "Domain Subject 3"] },
+            { id: "opt2", label: "Option 2: 1 Language + 1 Domain + General Test", countedSubjects: 3, maxMarks: 750, subjects: ["Language (List A)", "Economics or Pol Science", "General Test (Section III)"] }
+          ],
+          subjects: ["Language (List A)", "Economics", "Political Science", "Domain Subject 3"],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          requiresLanguageQualifying: false,
+          round1: { "UR": 692.7097, "OBC": 583.7847, "SC": 478.3405, "ST": 497.5373, "EWS": 585.759, "PwBD": 176.19, "KM": null, "SGC": 676.4996, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 676.4996, "OBC": 523.827, "SC": 444.8709, "ST": 407.2019, "EWS": 545.3888, "PwBD": null, "KM": null, "SGC": 630.2444, "Orphan_F": null, "Orphan_M": null },
+          spot: { "SC": 211.2039, "EWS": 299.6905 }
+        },
+        "B.A. Program (History + Political Science)": {
+          stream: "Humanities & Arts",
+          hasOptions: true,
+          options: [
+            { id: "opt1", label: "Option 1: 1 Language + 3 Domain Subjects", countedSubjects: 4, maxMarks: 1000, subjects: ["Language (List A)", "History", "Political Science", "Domain Subject 3"] },
+            { id: "opt2", label: "Option 2: 1 Language + 1 Domain + General Test", countedSubjects: 3, maxMarks: 750, subjects: ["Language (List A)", "History or Pol Science", "General Test (Section III)"] }
+          ],
+          subjects: ["Language (List A)", "History", "Political Science", "Domain Subject 3"],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          requiresLanguageQualifying: false,
+          round1: { "UR": 694.59, "OBC": 599.5349, "SC": 537.2999, "ST": 533.9522, "EWS": 583.0922, "PwBD": 240.828, "KM": null, "SGC": 691.7662, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 673.4302, "OBC": 529.6437, "SC": 481.9443, "ST": 440.8655, "EWS": 508.9783, "PwBD": 437.9398, "KM": null, "SGC": 622.7749, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Com. (Hons.)": {
+          stream: "Commerce & Management",
+          hasOptions: true,
+          options: [
+            { id: "opt1", label: "Option 1: 1 Language + Mathematics + 2 Domains", countedSubjects: 4, maxMarks: 1000, subjects: ["Language (List A)", "Mathematics/Applied Math", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"] },
+            { id: "opt2", label: "Option 2: 1 Language + Accountancy + 2 Domains", countedSubjects: 4, maxMarks: 1000, subjects: ["Language (List A)", "Accountancy/Book Keeping", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"] }
+          ],
+          subjects: ["Language (List A)", "Mathematics/Applied Math", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          requiresLanguageQualifying: false,
+          round1: { "UR": 783.7185, "OBC": 673.8708, "SC": 578.4182, "ST": 424.0942, "EWS": 724.4292, "PwBD": 167.4098, "KM": null, "SGC": 772.2324, "Orphan_F": 493.0604, "Orphan_M": 425.1269 },
+          round2: { "UR": 763.2875, "OBC": 645.5148, "SC": 550.4073, "ST": 327.0634, "EWS": 699.259, "PwBD": 471.6122, "KM": null, "SGC": 746.1991, "Orphan_F": 493.0604, "Orphan_M": null },
+          spot: { "ST": 340.2414, "KM": 415.2524, "Orphan_F": 505.8596 }
+        },
+        "Bachelor of Management Studies (BMS)": {
+          stream: "Commerce & Management",
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Any 1 Language (List A)", "Mathematics/Applied Mathematics", "General Test (Section III)"],
+          requiresLanguageQualifying: false,
+          round1: { "UR": 730.2847, "OBC": 595.2707, "SC": 526.9088, "ST": 386.1926, "EWS": 656.2943, "PwBD": 447.3425, "KM": null, "SGC": 698.8001, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 715.2311, "OBC": 580.6857, "SC": 500.2312, "ST": 219.0088, "EWS": 649.4984, "PwBD": 447.2696, "KM": null, "SGC": 690.8775, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Computer Science": {
+          stream: "Mathematical & Computing",
+          hasOptions: false,
+          options: [],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          subjects: ["Language (List A)", "Mathematics/Applied Math", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+          requiresLanguageQualifying: false,
+          round1: { "UR": 653.7045, "OBC": 577.7064, "SC": 501.2622, "ST": 400.9177, "EWS": 604.0946, "PwBD": 164.9925, "KM": 301.7816, "SGC": 653.5215, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 619.3906, "OBC": 516.9896, "SC": 431.0844, "ST": 325.5339, "EWS": 527.6736, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Mathematics": {
+          stream: "Mathematical & Computing",
+          hasOptions: false,
+          options: [],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          subjects: ["Language (List A)", "Mathematics", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+          requiresLanguageQualifying: false,
+          round1: { "UR": 604.6684, "OBC": 483.1077, "SC": 367.0198, "ST": 166.2977, "EWS": 497.6818, "PwBD": null, "KM": null, "SGC": 584.5448, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 553.8831, "OBC": 403.2708, "SC": 276.0828, "ST": 129.9848, "EWS": 437.3109, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Prog.) Mathematical Sciences": {
+          stream: "Mathematical & Computing",
+          hasOptions: false,
+          options: [],
+          countedSubjects: 4,
+          maxMarks: 1000,
+          subjects: ["Language (List A)", "Mathematics", "Domain Subject 1 (List B1)", "Domain Subject 2 (List B1/B2)"],
+          requiresLanguageQualifying: false,
+          round1: { "UR": 568.4292, "OBC": 434.0923, "SC": 336.0674, "ST": 182.6231, "EWS": 443.397, "PwBD": null, "KM": 78.1314, "SGC": 553.337, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 506.7486, "OBC": 348.3756, "SC": 252.9239, "ST": null, "EWS": 382.433, "PwBD": null, "KM": null, "SGC": 492.3568, "Orphan_F": null, "Orphan_M": null },
+          spot: { "KM": 226.4949 }
+        },
+        "B.Sc. (Hons.) Physics": {
+          stream: "Pure Physical Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Chemistry", "Mathematics"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 388.5576, "OBC": 307.9047, "SC": 221.3548, "ST": 49.547, "EWS": 320.8086, "PwBD": null, "KM": null, "SGC": 376.0837, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 330.5544, "OBC": 229.7286, "SC": 131.8528, "ST": 101.5588, "EWS": 239.6542, "PwBD": null, "KM": null, "SGC": null, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Chemistry": {
+          stream: "Pure Physical Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Chemistry", "Mathematics"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 380.1503, "OBC": 311.6665, "SC": 216.0778, "ST": 88.2204, "EWS": 324.5195, "PwBD": null, "KM": null, "SGC": 361.0647, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 316.2266, "OBC": 227.0829, "SC": 139.1374, "ST": 101.4051, "EWS": 239.8241, "PwBD": null, "KM": null, "SGC": 313.592, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Electronics": {
+          stream: "Pure Physical Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Mathematics", "Chemistry or Computer Science"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 353.9193, "OBC": 287.7856, "SC": 212.9615, "ST": 123.7415, "EWS": 301.0279, "PwBD": null, "KM": null, "SGC": 329.1864, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 297.3554, "OBC": 212.7542, "SC": 134.6306, "ST": 125.9771, "EWS": 220.2862, "PwBD": null, "KM": null, "SGC": 278.3772, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Prog.) Physical Science with Chemistry": {
+          stream: "Pure Physical Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Mathematics", "Chemistry"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 315.3041, "OBC": 249.5544, "SC": 158.9899, "ST": null, "EWS": 249.8672, "PwBD": null, "KM": null, "SGC": 291.6919, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 261.2387, "OBC": 176.9676, "SC": 55.2732, "ST": null, "EWS": 173.8024, "PwBD": null, "KM": null, "SGC": 219.1856, "Orphan_F": null, "Orphan_M": null },
+          spot: { "SC": 273.7156 }
+        },
+        "B.Sc. (Prog.) Physical Science with Computer Science/Informatics Practices": {
+          stream: "Pure Physical Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Mathematics", "Computer Science/IP"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 385.2533, "OBC": 317.2849, "SC": 231.6303, "ST": 112.14, "EWS": 344.8558, "PwBD": null, "KM": null, "SGC": 341.3855, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 343.2776, "OBC": 263.8057, "SC": 172.6982, "ST": 98.035, "EWS": 262.2446, "PwBD": null, "KM": null, "SGC": 295.4733, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Botany": {
+          stream: "Life Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Chemistry", "Biology/Biotechnology"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 566.2595, "OBC": 513.5576, "SC": 422.3603, "ST": 391.9222, "EWS": 514.255, "PwBD": 192.9716, "KM": null, "SGC": 554.5413, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 519.1073, "OBC": 457.9999, "SC": 377.9804, "ST": 295.9419, "EWS": 453.082, "PwBD": null, "KM": null, "SGC": 506.5738, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Hons.) Zoology": {
+          stream: "Life Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Chemistry", "Biology/Biotechnology"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 595.071, "OBC": 544.7799, "SC": 502.5483, "ST": 432.7086, "EWS": 550.6781, "PwBD": 138.9165, "KM": null, "SGC": 589.1932, "Orphan_F": null, "Orphan_M": null },
+          round2: { "UR": 539.3187, "OBC": 482.5264, "SC": 398.6575, "ST": 354.4592, "EWS": 476.3597, "PwBD": null, "KM": null, "SGC": 535.8374, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        },
+        "B.Sc. (Prog.) Life Science": {
+          stream: "Life Sciences",
+          isScienceDomainMerit: true,
+          hasOptions: false,
+          options: [],
+          countedSubjects: 3,
+          maxMarks: 750,
+          subjects: ["Physics", "Chemistry", "Biology"],
+          requiresLanguageQualifying: true,
+          round1: { "UR": 574.9848, "OBC": 533.7616, "SC": 465.6472, "ST": 395.8176, "EWS": 517.556, "PwBD": null, "KM": null, "SGC": 557.5782, "Orphan_F": 169.2685, "Orphan_M": 190.889 },
+          round2: { "UR": 534.0718, "OBC": 473.8372, "SC": 400.7825, "ST": 299.7792, "EWS": 467.977, "PwBD": null, "KM": null, "SGC": 513.1888, "Orphan_F": null, "Orphan_M": null },
+          spot: {}
+        }
+      };
+
+      // Defensive schema normalization pass: guarantees every single course adheres strictly to the schema
+      Object.keys(DDUC_CUTOFF_DATA).forEach(key => {
+        const c = DDUC_CUTOFF_DATA[key];
+        c.name = c.name || key;
+        c.hasOptions = Boolean(c.hasOptions);
+        c.options = Array.isArray(c.options) ? c.options : [];
+        if (!Array.isArray(c.subjects) || c.subjects.length === 0) {
+          c.subjects = c.options.length > 0 && Array.isArray(c.options[0].subjects) 
+            ? [...c.options[0].subjects] 
+            : ["Domain Subject 1", "Domain Subject 2", "Domain Subject 3", "Domain Subject 4"];
+        }
+        c.countedSubjects = typeof c.countedSubjects === 'number' ? c.countedSubjects : (c.subjects.length || 4);
+        c.maxMarks = typeof c.maxMarks === 'number' ? c.maxMarks : (c.countedSubjects * 250);
+        c.requiresLanguageQualifying = Boolean(c.requiresLanguageQualifying);
+        c.round1 = c.round1 || {};
+        c.round2 = c.round2 || {};
+        c.spot = c.spot || {};
+      });
+
+      const CATEGORIES = [
+        { id: "UR", label: "UR / Unreserved", short: "UR" },
+        { id: "OBC", label: "OBC-NCL", short: "OBC" },
+        { id: "SC", label: "Scheduled Caste", short: "SC" },
+        { id: "ST", label: "Scheduled Tribe", short: "ST" },
+        { id: "EWS", label: "Economically Weaker", short: "EWS" },
+        { id: "PwBD", label: "PwBD", short: "PwBD" },
+        { id: "KM", label: "Kashmiri Migrant", short: "KM" },
+        { id: "SGC", label: "Single Girl Child", short: "SGC" },
+        { id: "Orphan_F", label: "Orphan (Female)", short: "Orphan F" },
+        { id: "Orphan_M", label: "Orphan (Male)", short: "Orphan M" }
+      ];
+
+      const ROUNDS = [
+        { id: "round1", label: "Round 01", sub: "First Allocation" },
+        { id: "round2", label: "Round 02", sub: "Second Allocation" },
+        { id: "spot", label: "Spot Round", sub: "Mop-Up Quota" }
+      ];
+
+      const courseKeyList = Object.keys(DDUC_CUTOFF_DATA);
+      const defaultCourseKey = courseKeyList.length > 0 ? courseKeyList[0] : "B.Com. (Hons.)";
+
+      function MainApp() {
+        const [selectedCourseName, setSelectedCourseName] = useState(defaultCourseKey);
+        const [selectedOptionId, setSelectedOptionId] = useState("opt1");
+        const [selectedCategory, setSelectedCategory] = useState("UR");
+        const [selectedRound, setSelectedRound] = useState("round1");
+
+        const [scores, setScores] = useState({ 0: 215, 1: 220, 2: 210, 3: 205 });
+        const [qualifyingLangScore, setQualifyingLangScore] = useState(165);
+        const [showInfoModal, setShowInfoModal] = useState(false);
+        const [copiedToast, setCopiedToast] = useState(false);
+        const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+        const [searchQuery, setSearchQuery] = useState("");
+        const [selectedStreamFilter, setSelectedStreamFilter] = useState("ALL");
+
+        // Safe Fallback Object so activeCourse is NEVER undefined
+        const activeCourse = (DDUC_CUTOFF_DATA && DDUC_CUTOFF_DATA[selectedCourseName]) 
+          || (DDUC_CUTOFF_DATA && DDUC_CUTOFF_DATA[defaultCourseKey]) 
+          || {
+            name: "Default Program",
+            stream: "General",
+            maxMarks: 1000,
+            countedSubjects: 4,
+            subjects: ["Subject 1", "Subject 2", "Subject 3", "Subject 4"],
+            hasOptions: false,
+            options: [],
+            requiresLanguageQualifying: false,
+            round1: {},
+            round2: {},
+            spot: {}
+          };
+
+        const activeOption = useMemo(() => {
+          if (activeCourse?.hasOptions && Array.isArray(activeCourse.options) && activeCourse.options.length > 0) {
+            return activeCourse.options.find(o => o && o.id === selectedOptionId) || activeCourse.options[0] || null;
+          }
+          return null;
+        }, [activeCourse, selectedOptionId]);
+
+        const activeSubjectList = useMemo(() => {
+          if (activeOption && Array.isArray(activeOption.subjects) && activeOption.subjects.length > 0) {
+            return activeOption.subjects;
+          }
+          if (activeCourse && Array.isArray(activeCourse.subjects) && activeCourse.subjects.length > 0) {
+            return activeCourse.subjects;
+          }
+          return ["Language / Domain 1", "Domain 2", "Domain 3", "Domain 4"];
+        }, [activeCourse, activeOption]);
+
+        const activeMaxMarks = activeOption?.maxMarks ?? activeCourse?.maxMarks ?? 1000;
+        const activeSubjectCount = activeOption?.countedSubjects ?? activeCourse?.countedSubjects ?? (activeSubjectList?.length || 4);
+
+        useEffect(() => {
+          setScores(prev => {
+            const next = { ...prev };
+            for (let i = 0; i < activeSubjectCount; i++) {
+              if (next[i] === undefined) next[i] = 200;
+            }
+            return next;
+          });
+        }, [activeSubjectCount]);
+
+        const totalScore = useMemo(() => {
+          let sum = 0;
+          for (let i = 0; i < activeSubjectCount; i++) {
+            sum += (scores[i] !== undefined ? Number(scores[i]) : 0);
+          }
+          return sum;
+        }, [scores, activeSubjectCount]);
+
+        const isLanguageDisqualified = useMemo(() => {
+          if (activeCourse.requiresLanguageQualifying) {
+            return qualifyingLangScore < 75;
+          }
+          return false;
+        }, [activeCourse, qualifyingLangScore]);
+
+        const activeRoundCutoffs = activeCourse[selectedRound] || {};
+        const targetCutoff = activeRoundCutoffs[selectedCategory];
+        const hasSeatAllocated = targetCutoff !== null && targetCutoff !== undefined;
+        const delta = hasSeatAllocated ? totalScore - targetCutoff : null;
+        const isQualified = hasSeatAllocated && delta >= 0 && !isLanguageDisqualified;
+
+        useEffect(() => {
+          if (isQualified && window.confetti) {
+            window.confetti({
+              particleCount: 50,
+              spread: 60,
+              origin: { y: 0.65 },
+              colors: ['#67E8F9', '#34D399', '#F8FAFC']
+            });
+          }
+        }, [isQualified, selectedCourseName, selectedCategory, selectedRound]);
+
+        // Stream filtering categories
+        const STREAMS = [
+          { id: "ALL", label: "All Disciplines" },
+          { id: "Humanities & Arts", label: "Humanities & Arts" },
+          { id: "Commerce & Management", label: "Commerce & Mgmt" },
+          { id: "Mathematical Sciences", label: "Math & Computing" },
+          { id: "Physical Sciences", label: "Physical Sciences" },
+          { id: "Life Sciences", label: "Life Sciences" }
+        ];
+
+        const getStreamBadgeColor = (stream) => {
+          switch(stream) {
+            case "Commerce & Management":
+              return "text-ice-cyan bg-ice-cyan/10 border-ice-cyan/30";
+            case "Mathematical Sciences":
+              return "text-emerald-400 bg-emerald-400/10 border-emerald-400/30";
+            case "Physical Sciences":
+              return "text-indigo-300 bg-indigo-500/10 border-indigo-400/30";
+            case "Life Sciences":
+              return "text-teal-300 bg-teal-500/10 border-teal-400/30";
+            case "Humanities & Arts":
+              return "text-amber-300 bg-amber-500/10 border-amber-400/30";
+            default:
+              return "text-slate-300 bg-white/5 border-white/10";
+          }
+        };
+
+        const getStreamIconSvg = (stream) => {
+          switch(stream) {
+            case "Commerce & Management":
+              return html`<svg className="w-5 h-5 text-ice-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`;
+            case "Mathematical Sciences":
+              return html`<svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>`;
+            case "Physical Sciences":
+              return html`<svg className="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>`;
+            case "Life Sciences":
+              return html`<svg className="w-5 h-5 text-teal-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`;
+            default:
+              return html`<svg className="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>`;
+          }
+        };
+
+        const filteredCourses = useMemo(() => {
+          return courseKeyList.filter(name => {
+            const course = DDUC_CUTOFF_DATA[name];
+            if (!course) return false;
+            const matchesStream = selectedStreamFilter === "ALL" || course.stream === selectedStreamFilter;
+            const query = searchQuery.trim().toLowerCase();
+            if (!query) return matchesStream;
+            const matchesName = name.toLowerCase().includes(query);
+            const matchesSubjects = (course.subjects || []).some(s => s && s.toLowerCase().includes(query));
+            return matchesStream && (matchesName || matchesSubjects);
+          });
+        }, [selectedStreamFilter, searchQuery]);
+
+        // Cursor-Reactive Spotlight & 3D Magnetic Tilt handler
+        const handleCardMouseMove = (e) => {
+          const card = e.currentTarget;
+          if (!card) return;
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          card.style.setProperty('--spotlight-x', `${x}px`);
+          card.style.setProperty('--spotlight-y', `${y}px`);
+
+          // Accessibility check: disable tilt if prefers-reduced-motion is active
+          if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            return;
+          }
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = -((y - centerY) / centerY) * 5;
+          const rotateY = ((x - centerX) / centerX) * 5;
+
+          card.style.transform = `perspective(700px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+        };
+
+        const handleCardMouseLeave = (e) => {
+          const card = e.currentTarget;
+          if (!card) return;
+          card.style.setProperty('--spotlight-x', '-999px');
+          card.style.setProperty('--spotlight-y', '-999px');
+          card.style.transform = `perspective(700px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        };
+
+        // Keyboard escape & click outside handler
+        useEffect(() => {
+          if (!isDropdownOpen) return;
+          const handleKeyDown = (e) => {
+            if (e.key === "Escape") {
+              setIsDropdownOpen(false);
+            }
+          };
+          const handleClickOutside = (e) => {
+            const container = document.getElementById("program-specification-container");
+            if (container && !container.contains(e.target)) {
+              setIsDropdownOpen(false);
+            }
+          };
+          window.addEventListener("keydown", handleKeyDown);
+          document.addEventListener("mousedown", handleClickOutside);
+          return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            document.removeEventListener("mousedown", handleClickOutside);
+          };
+        }, [isDropdownOpen]);
+
+        // Interactive Liquid Silver / Polished Chrome Specular Reflection & Physics Loop
+        useEffect(() => {
+          const wrapper = document.getElementById("liquid-header-wrapper");
+          if (!wrapper) return;
+
+          const glowBlobs = [
+            document.getElementById("glow-blob-1"),
+            document.getElementById("glow-blob-2"),
+            document.getElementById("glow-blob-3"),
+            document.getElementById("glow-blob-4")
+          ];
+
+          let mouse = { x: 0.5, y: 0.5, isOver: false };
+          const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+          const onMouseMove = (e) => {
+            if (isTouch) return;
+            const rect = wrapper.getBoundingClientRect();
+            if (!rect.width || !rect.height) return;
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            mouse.x = Math.max(0, Math.min(1, x));
+            mouse.y = Math.max(0, Math.min(1, y));
+            mouse.isOver = true;
+          };
+
+          const onMouseLeave = () => {
+            mouse.isOver = false;
+            mouse.x = 0.5;
+            mouse.y = 0.5;
+          };
+
+          wrapper.addEventListener("mousemove", onMouseMove, { passive: true });
+          wrapper.addEventListener("mouseleave", onMouseLeave, { passive: true });
+          window.addEventListener("blur", onMouseLeave, { passive: true });
+
+          let currentSpecX = 50;
+          let currentSpecY = 38;
+          let currentRot = 0;
+          let currentSpec2X = 35;
+          let currentSpec2Y = 65;
+
+          // Ambient platinum glow blobs data
+          const blobs = [
+            { curX: 20, curY: 30, tarX: 20, tarY: 30, spdX: 0.0006, spdY: 0.0008, orbX: 9, orbY: 8, w: 320, h: 180 },
+            { curX: 75, curY: 65, tarX: 75, tarY: 65, spdX: 0.0008, spdY: 0.0005, orbX: 11, orbY: 9, w: 340, h: 200 },
+            { curX: 45, curY: 25, tarX: 45, tarY: 25, spdX: 0.0005, spdY: 0.0007, orbX: 8, orbY: 8, w: 220, h: 140 },
+            { curX: 80, curY: 35, tarX: 80, tarY: 35, spdX: 0.0007, spdY: 0.0006, orbX: 9, orbY: 10, w: 260, h: 160 }
+          ];
+
+          let animId;
+          const animate = (time) => {
+            // Ambient idle float (subtle continuous liquid breathing)
+            const idleSine = Math.sin(time * 0.00075);
+            const idleCos = Math.cos(time * 0.0006);
+
+            let targetSpecX = 50 + idleSine * 8;
+            let targetSpecY = 38 + idleCos * 6;
+            let targetRot = idleSine * 5;
+            let targetSpec2X = 35 + idleCos * 7;
+            let targetSpec2Y = 65 + idleSine * 5;
+
+            // Convex Liquid Metal Reflection Physics:
+            // The white specular highlight tracks opposite to the cursor, creating convex reflection
+            if (mouse.isOver && !isTouch) {
+              const relX = mouse.x - 0.5; // -0.5 to +0.5
+              const relY = mouse.y - 0.5;
+
+              // Convex specular highlight movement opposing cursor direction
+              targetSpecX = 50 - relX * 55;
+              targetSpecY = 38 - relY * 45;
+              targetRot = relX * 22; // Subtle chrome reflection angle tilt
+
+              targetSpec2X = 35 + relX * 40;
+              targetSpec2Y = 65 + relY * 35;
+            }
+
+            // Smooth 60fps Lerp Damping
+            currentSpecX += (targetSpecX - currentSpecX) * 0.09;
+            currentSpecY += (targetSpecY - currentSpecY) * 0.09;
+            currentRot += (targetRot - currentRot) * 0.09;
+            currentSpec2X += (targetSpec2X - currentSpec2X) * 0.09;
+            currentSpec2Y += (targetSpec2Y - currentSpec2Y) * 0.09;
+
+            wrapper.style.setProperty("--mouse-x", `${(mouse.x * 100).toFixed(2)}%`);
+            wrapper.style.setProperty("--mouse-y", `${(mouse.y * 100).toFixed(2)}%`);
+            wrapper.style.setProperty("--spec-x", `${currentSpecX.toFixed(2)}%`);
+            wrapper.style.setProperty("--spec-y", `${currentSpecY.toFixed(2)}%`);
+            wrapper.style.setProperty("--spec-rot", `${currentRot.toFixed(2)}deg`);
+            wrapper.style.setProperty("--spec2-x", `${currentSpec2X.toFixed(2)}%`);
+            wrapper.style.setProperty("--spec2-y", `${currentSpec2Y.toFixed(2)}%`);
+
+            // Update Diffused Platinum Glow Blobs behind text
+            const rect = wrapper.getBoundingClientRect();
+            const w = rect.width || 600;
+            const h = rect.height || 160;
+
+            blobs.forEach((b, i) => {
+              if (glowBlobs[i]) {
+                const basePxX = (b.curX / 100) * w;
+                const basePxY = (b.curY / 100) * h;
+
+                if (mouse.isOver && !isTouch) {
+                  const mPxX = mouse.x * w;
+                  const mPxY = mouse.y * h;
+                  const dx = mPxX - basePxX;
+                  const dy = mPxY - basePxY;
+                  const dist = Math.sqrt(dx * dx + dy * dy);
+                  if (dist < 180 && dist > 0.1) {
+                    const repel = (1 - dist / 180) * 60;
+                    b.tarX = basePxX - (dx / dist) * repel;
+                    b.tarY = basePxY - (dy / dist) * repel;
+                  } else {
+                    b.tarX = basePxX;
+                    b.tarY = basePxY;
+                  }
+                } else {
+                  b.tarX = basePxX + Math.sin(time * b.spdX + i) * b.orbX;
+                  b.tarY = basePxY + Math.cos(time * b.spdY + i) * b.orbY;
+                }
+
+                b.curX += (b.tarX - b.curX) * 0.08;
+                b.curY += (b.tarY - b.curY) * 0.08;
+
+                const gx = b.curX - b.w / 2;
+                const gy = b.curY - b.h / 2;
+                glowBlobs[i].style.transform = `translate3d(${gx.toFixed(1)}px, ${gy.toFixed(1)}px, 0)`;
+              }
+            });
+
+            animId = requestAnimationFrame(animate);
+          };
+
+          animId = requestAnimationFrame(animate);
+
+          return () => {
+            cancelAnimationFrame(animId);
+            wrapper.removeEventListener("mousemove", onMouseMove);
+            wrapper.removeEventListener("mouseleave", onMouseLeave);
+            window.removeEventListener("blur", onMouseLeave);
+          };
+        }, []);
+
+        const handleReset = () => {
+          const defaultScore = Math.round((activeMaxMarks / activeSubjectCount) * 0.85);
+          const resetObj = {};
+          for (let i = 0; i < activeSubjectCount; i++) {
+            resetObj[i] = defaultScore;
+          }
+          setScores(resetObj);
+          setQualifyingLangScore(165);
+        };
+
+        const handleCopyReport = () => {
+          const report = `// DEEN DAYAL UPADHYAYA COLLEGE (DU) // ADMISSION TELEMETRY REPORT
+Course: ${selectedCourseName} ${activeOption ? `(${activeOption.label})` : ""}
+Category: ${selectedCategory} | Round: ${ROUNDS.find(r => r.id === selectedRound)?.label}
+Total Merit Score: ${totalScore} / ${activeMaxMarks} (${((totalScore / activeMaxMarks) * 100).toFixed(2)}%)
+DDUC Closing Cutoff: ${hasSeatAllocated ? targetCutoff.toFixed(4) : "No Seat Allocated"}
+Verdict: ${
+  isLanguageDisqualified 
+    ? "DISQUALIFIED (Failed 30% Language Qualifying Threshold)" 
+    : hasSeatAllocated 
+      ? (delta >= 0 ? `QUALIFIED / ADMISSION LIKELY (+${delta.toFixed(2)} marks)` : `AWAY FROM CUTOFF (${delta.toFixed(2)} marks)`)
+      : "SEAT QUOTA EXHAUSTED / UNALLOCATED"
+}
+Generated via DDUC CUET Telemetry Engine // University of Delhi`;
+
+          navigator.clipboard.writeText(report).then(() => {
+            setCopiedToast(true);
+            setTimeout(() => setCopiedToast(false), 2600);
+          });
+        };
+
+        return html`
+          <div className="min-h-screen bg-void-950 text-ice-white relative overflow-hidden flex flex-col justify-between">
+            
+            <!-- TOP BAR // THAW Luxury Brutalist Style -->
+            <header className="border-b border-white/[0.07] bg-void-900/70 backdrop-blur-2xl sticky top-0 z-50 px-4 lg:px-12 py-3.5 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <a href="./index.html" title="Return to 3D Campus Experience" className="flex items-center gap-3 group">
+                  <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-ice-cyan group-hover:border-ice-cyan/40 transition">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-display text-sm font-bold tracking-widest text-ice-white">DDUC</span>
+                      <span className="font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-status-bronze">DU.2026</span>
+                    </div>
+                    <span className="font-serif italic text-xs text-slate-400 block -mt-0.5">Deen Dayal Upadhyaya College</span>
+                  </div>
+                </a>
+              </div>
+
+              <div className="hidden md:flex items-center gap-2 font-mono text-[10px] tracking-wider text-slate-400">
+                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-status-green animate-ping"></span>
+                  <span>// LIVE_TELEMETRY: ACTIVE</span>
+                </span>
+                <span className="px-3 py-1 rounded-full bg-white/[0.03] border border-white/[0.06] text-slate-400">
+                  CLARITY BEGINS HERE
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2.5">
+                <button 
+                  onClick=${() => setShowInfoModal(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-mono text-slate-300 hover:text-white transition"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  <span className="hidden sm:inline">DU Rules</span>
+                </button>
+                <a 
+                  href="./index.html" 
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-ice-cyan/10 hover:bg-ice-cyan/20 border border-ice-cyan/30 text-xs font-mono text-ice-cyan hover:shadow-lg hover:shadow-ice-cyan/10 transition"
+                >
+                  <span>3D Campus Tour</span>
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+              </div>
+            </header>
+
+            <!-- MAIN WORKSPACE -->
+            <main className="max-w-7xl mx-auto px-4 lg:px-10 py-8 w-full flex-grow">
+              
+              <div className="mb-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-white/[0.06]">
+                <div id="liquid-header-wrapper" className="liquid-header-wrapper max-w-3xl relative">
+                  <!-- Diffused Ambient Platinum Glow Layer behind headline -->
+                  <div className="liquid-ambient-glow" id="liquid-ambient-glow" aria-hidden="true">
+                    <div className="ambient-glow-blob" id="glow-blob-1"></div>
+                    <div className="ambient-glow-blob" id="glow-blob-2"></div>
+                    <div className="ambient-glow-blob" id="glow-blob-3"></div>
+                    <div className="ambient-glow-blob" id="glow-blob-4"></div>
+                  </div>
+
+                  <!-- Telemetry Tag (Top) -->
+                  <div className="telemetry-tag-glowing font-mono text-xs uppercase mb-3 flex items-center gap-2">
+                    <span>// ADMISSION_TELEMETRY_ENGINE</span>
+                    <span className="telemetry-tag-dot">•</span>
+                    <span>UNIVERSITY OF DELHI</span>
+                  </div>
+
+                  <!-- Interactive Liquid Silver / Polished Chrome Headline -->
+                  <div className="liquid-headline-container">
+                    <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight uppercase leading-[0.92] select-none liquid-sheen-active">
+                      <!-- Line 1: CUET DU MERIT -->
+                      <span className="liquid-chrome-text headline-line-1 block">
+                        CUET DU MERIT
+                      </span>
+                      
+                      <!-- Line 2: & cutoff CALCULATOR -->
+                      <span className="headline-line-2 flex flex-wrap items-baseline gap-x-2.5 mt-1 sm:mt-2">
+                        <span className="headline-ampersand">&</span>
+                        <span className="headline-cutoff">cutoff</span>
+                        <span className="liquid-chrome-text headline-calculator">CALCULATOR</span>
+                      </span>
+                    </h1>
+                  </div>
+                </div>
+
+                <div className="max-w-sm text-left lg:text-right font-mono text-xs text-slate-400 space-y-1">
+                  <div className="text-ice-white font-medium">[DDUC_DWARKA_CAMPUS]</div>
+                  <div>CYCLE 2026 // NTA NORMALIZED DOMAIN ENGINE</div>
+                  <div className="text-slate-500 text-[10px]">VERIFIED DU CSAS CUTOFF BENCHMARKS</div>
+                </div>
+              </div>
+
+              <!-- WORKSPACE GRID -->
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- LEFT COLUMN: CONTROLS & SLIDERS (7 COLS) -->
+                <div className="lg:col-span-7 space-y-6">
+                  
+                  <!-- 01 // COURSE SELECTOR -->
+                  <div id="program-specification-container" className="thaw-glass rounded-2xl p-6 relative">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-ice-cyan">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        <span>01 // PROGRAM_SPECIFICATION</span>
+                      </div>
+                      <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest">${activeCourse.stream}</span>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-2">
+                      <label className="block font-mono text-xs text-slate-400 uppercase">Degree Program & Subjects</label>
+                      <span className="font-mono text-[10px] text-ice-cyan/90 uppercase tracking-wider">
+                        ${isDropdownOpen ? "// CLICK TO COLLAPSE" : "// CLICK TO BROWSE LIST"}
+                      </span>
+                    </div>
+
+                    <!-- CURSOR-REACTIVE ACTIVE TRIGGER CARD -->
+                    <div 
+                      onClick=${() => setIsDropdownOpen(prev => !prev)}
+                      onMouseMove=${handleCardMouseMove}
+                      onMouseLeave=${handleCardMouseLeave}
+                      tabIndex="0"
+                      role="button"
+                      aria-expanded=${isDropdownOpen}
+                      onKeyDown=${(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setIsDropdownOpen(prev => !prev);
+                        }
+                      }}
+                      className="cursor-spotlight-card w-full bg-void-900/90 border border-white/15 hover:border-ice-cyan/50 rounded-2xl p-4 sm:p-5 cursor-pointer shadow-xl transition-all duration-300 group select-none active:scale-[0.98]"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div className="flex items-start sm:items-center gap-3.5">
+                          <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-ice-cyan group-hover:border-ice-cyan/50 group-hover:bg-ice-cyan/10 transition-colors shrink-0">
+                            ${getStreamIconSvg(activeCourse.stream)}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                              <span className=${`font-mono text-[10px] uppercase font-bold px-2.5 py-0.5 rounded-full border ${getStreamBadgeColor(activeCourse.stream)}`}>
+                                ${activeCourse.stream}
+                              </span>
+                              <span className="font-mono text-[10px] text-slate-300 px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                                ${activeMaxMarks} MARKS
+                              </span>
+                              <span className="font-mono text-[10px] text-ice-cyan font-semibold px-2 py-0.5 rounded-full bg-ice-cyan/10 border border-ice-cyan/20">
+                                ${activeSubjectCount} DOMAINS
+                              </span>
+                            </div>
+                            <h3 className="text-base sm:text-lg font-bold text-white font-sans group-hover:text-ice-cyan transition-colors flex items-center gap-2">
+                              <span>${selectedCourseName}</span>
+                            </h3>
+                            <p className="text-xs text-slate-400 mt-1 font-mono">
+                              Subjects: ${(activeCourse.subjects || []).slice(0, 3).join(" • ")}${(activeCourse.subjects || []).length > 3 ? "..." : ""}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 self-end sm:self-center shrink-0">
+                          <div className="hidden sm:flex flex-col items-end text-right">
+                            <span className="font-mono text-[10px] text-slate-400 uppercase tracking-wider">
+                              ${isDropdownOpen ? "CLOSE LIST" : "CHANGE PROGRAM"}
+                            </span>
+                            <span className="text-[10px] text-ice-cyan font-mono font-medium">17 DU CSAS COURSES</span>
+                          </div>
+                          <div className=${`w-9 h-9 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-slate-300 group-hover:text-ice-cyan group-hover:border-ice-cyan/40 transition-all duration-300 ${isDropdownOpen ? "rotate-180 bg-ice-cyan/15 border-ice-cyan/40 text-ice-cyan shadow-lg shadow-ice-cyan/20" : ""}`}>
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7"/></svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- CURSOR-REACTIVE PROGRAM SELECTION DROPDOWN -->
+                    ${isDropdownOpen ? html`
+                      <div className="subject-selector-dropdown mt-4 p-4 sm:p-5 rounded-2xl bg-void-950/95 border border-white/15 shadow-2xl backdrop-blur-2xl relative z-40">
+                        <!-- Search & Quick Actions -->
+                        <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between pb-3.5 border-b border-white/[0.08]">
+                          <div className="relative flex-grow">
+                            <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            </div>
+                            <input
+                              type="text"
+                              placeholder="Search 17 DDUC Programs & Subject Requirements..."
+                              value=${searchQuery}
+                              onChange=${(e) => setSearchQuery(e.target.value)}
+                              className="w-full bg-void-900 border border-white/15 rounded-xl pl-10 pr-8 py-2 text-xs font-mono text-white placeholder-slate-500 focus:outline-none focus:border-ice-cyan transition"
+                              autoFocus
+                            />
+                            ${searchQuery ? html`
+                              <button 
+                                onClick=${() => setSearchQuery("")}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white"
+                              >
+                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                              </button>
+                            ` : null}
+                          </div>
+
+                          <button
+                            onClick=${() => setIsDropdownOpen(false)}
+                            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-400 hover:text-white text-xs font-mono flex items-center justify-center gap-1.5 shrink-0 transition active:scale-95"
+                          >
+                            <span>ESC // Close</span>
+                          </button>
+                        </div>
+
+                        <!-- Stream Filter Pills -->
+                        <div className="flex items-center gap-1.5 overflow-x-auto py-3 border-b border-white/[0.06] no-scrollbar">
+                          ${STREAMS.map((s) => {
+                            const isSel = selectedStreamFilter === s.id;
+                            return html`
+                              <button
+                                key=${s.id}
+                                onClick=${() => setSelectedStreamFilter(s.id)}
+                                className=${`px-3 py-1.5 rounded-lg text-[11px] font-mono whitespace-nowrap transition-all active:scale-95 ${
+                                  isSel
+                                    ? "bg-ice-cyan text-void-950 font-bold shadow-md shadow-ice-cyan/20"
+                                    : "bg-void-900/80 text-slate-400 hover:text-white hover:bg-void-800 border border-white/[0.06]"
+                                }`}
+                              >
+                                ${s.label}
+                              </button>
+                            `;
+                          })}
+                        </div>
+
+                        <!-- Grid of Cursor-Reactive Subject Cards -->
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 mt-3.5 max-h-[440px] overflow-y-auto pr-1">
+                          ${filteredCourses.length === 0 ? html`
+                            <div className="col-span-2 py-12 text-center font-mono text-xs text-slate-500">
+                              No programs found matching "${searchQuery}".
+                            </div>
+                          ` : filteredCourses.map((cName, idx) => {
+                            const cData = DDUC_CUTOFF_DATA[cName] || {};
+                            const isSelected = selectedCourseName === cName;
+                            return html`
+                              <div
+                                key=${cName}
+                                style=${{ "--item-idx": idx }}
+                                onClick=${() => {
+                                  setSelectedCourseName(cName);
+                                  setSelectedOptionId("opt1");
+                                  setIsDropdownOpen(false);
+                                }}
+                                onMouseMove=${handleCardMouseMove}
+                                onMouseLeave=${handleCardMouseLeave}
+                                className=${`cursor-spotlight-card stagger-card p-3.5 rounded-xl border text-left cursor-pointer transition-all duration-300 flex flex-col justify-between select-none active:scale-[0.98] ${
+                                  isSelected
+                                    ? "bg-ice-cyan/[0.09] border-ice-cyan shadow-lg shadow-ice-cyan/15 ring-1 ring-ice-cyan/40"
+                                    : "bg-void-900/70 border-white/[0.08] hover:border-white/20 hover:bg-void-800/80 text-slate-300"
+                                }`}
+                              >
+                                <div>
+                                  <div className="flex items-center justify-between gap-2 mb-1.5">
+                                    <span className=${`font-mono text-[9px] uppercase font-semibold px-2 py-0.5 rounded-full border ${getStreamBadgeColor(cData.stream)}`}>
+                                      ${cData.stream}
+                                    </span>
+                                    <div className="flex items-center gap-1.5">
+                                      <span className="font-mono text-[10px] text-slate-400 font-medium">
+                                        ${cData.maxMarks || 1000} M
+                                      </span>
+                                      ${isSelected ? html`
+                                        <span className="w-4 h-4 rounded-full bg-ice-cyan text-void-950 flex items-center justify-center">
+                                          <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7"/></svg>
+                                        </span>
+                                      ` : null}
+                                    </div>
+                                  </div>
+
+                                  <h4 className=${`text-xs sm:text-sm font-semibold font-sans leading-snug ${isSelected ? "text-white font-bold" : "text-slate-200"}`}>
+                                    ${cName}
+                                  </h4>
+                                </div>
+
+                                <div className="mt-2.5 pt-2 border-t border-white/[0.05] flex items-center justify-between text-[10px] font-mono text-slate-400">
+                                  <span>${cData.countedSubjects || 4} Papers • ${(cData.subjects || []).slice(0, 2).join(", ")}...</span>
+                                  <span className=${isSelected ? "text-ice-cyan font-bold" : "text-slate-500"}>
+                                    ${isSelected ? "ACTIVE // SELECTED" : "SELECT"}
+                                  </span>
+                                </div>
+                              </div>
+                            `;
+                          })}
+                        </div>
+                      </div>
+                    ` : null}
+
+                    <!-- Option Switcher if applicable -->
+                    ${activeCourse?.hasOptions && (activeCourse?.options ?? []).length > 0 ? html`
+                      <div className="mt-5 pt-4 border-t border-white/[0.08]">
+                        <div className="font-mono text-[11px] text-slate-400 uppercase tracking-wider mb-2.5 flex items-center justify-between">
+                          <span>COMBINATION CRITERIA SELECTION</span>
+                          <span className="text-ice-cyan font-semibold">DU RULE COMPLIANT</span>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          ${(activeCourse?.options || []).map((opt) => {
+                            if (!opt) return null;
+                            const isSelected = selectedOptionId === opt.id;
+                            return html`
+                              <button
+                                key=${opt.id}
+                                onClick=${() => setSelectedOptionId(opt.id)}
+                                className=${`p-3 rounded-xl text-left border transition-all ${
+                                  isSelected 
+                                    ? "bg-ice-cyan/10 border-ice-cyan/50 shadow-md shadow-ice-cyan/5 text-white" 
+                                    : "bg-void-900/60 border-white/[0.08] hover:border-white/20 text-slate-300"
+                                }`}
+                              >
+                                <div className="flex items-center justify-between mb-1">
+                                  <span className=${`font-mono text-xs font-bold uppercase ${isSelected ? "text-ice-cyan" : "text-slate-400"}`}>
+                                    ${opt.id === "opt1" ? "Option 01" : "Option 02"}
+                                  </span>
+                                  <span className="font-mono text-[10px] text-slate-400 font-medium">Max: ${opt.maxMarks || 1000}</span>
+                                </div>
+                                <p className="text-xs text-slate-300 font-sans leading-snug">${opt.label || ""}</p>
+                              </button>
+                            `;
+                          })}
+                        </div>
+                      </div>
+                    ` : null}
+                  </div>
+
+                  <!-- 02 // ROUND & CATEGORY SELECTOR -->
+                  <div className="thaw-glass rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-ice-cyan">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+                        <span>02 // RESERVATION & ALLOCATION CYCLE</span>
+                      </div>
+                      <span className="font-mono text-[10px] text-slate-400">DU CSAS BENCHMARKS</span>
+                    </div>
+
+                    <div className="mb-5">
+                      <label className="block font-mono text-xs text-slate-400 mb-2 uppercase">Admission Allocation Round</label>
+                      <div className="grid grid-cols-3 gap-2">
+                        ${(ROUNDS || []).map((r) => {
+                          if (!r) return null;
+                          const isSelected = selectedRound === r.id;
+                          return html`
+                            <button
+                              key=${r.id}
+                              onClick=${() => setSelectedRound(r.id)}
+                              className=${`p-3 rounded-xl border text-center transition-all ${
+                                isSelected
+                                  ? "bg-ice-cyan/10 border-ice-cyan text-white shadow-lg shadow-ice-cyan/10"
+                                  : "bg-void-900/60 border-white/[0.08] hover:border-white/20 text-slate-400"
+                              }`}
+                            >
+                              <div className=${`font-mono text-xs font-bold ${isSelected ? "text-ice-cyan" : "text-slate-200"}`}>${r.label}</div>
+                              <div className="text-[10px] text-slate-400 font-sans">${r.sub}</div>
+                            </button>
+                          `;
+                        })}
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block font-mono text-xs text-slate-400 mb-2 uppercase">Seat Reservation Category</label>
+                      <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                        ${(CATEGORIES || []).map((cat) => {
+                          if (!cat) return null;
+                          const isSelected = selectedCategory === cat.id;
+                          return html`
+                            <button
+                              key=${cat.id}
+                              onClick=${() => setSelectedCategory(cat.id)}
+                              className=${`px-2.5 py-2 rounded-lg font-mono text-xs font-semibold border transition-all truncate ${
+                                isSelected
+                                  ? "bg-white text-void-950 border-white shadow-md shadow-white/10"
+                                  : "bg-void-900/70 border-white/[0.07] hover:border-white/20 text-slate-400 hover:text-white"
+                              }`}
+                              title=${cat.label}
+                            >
+                              ${cat.short}
+                            </button>
+                          `;
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 03 // SUBJECT MARKS SLIDERS -->
+                  <div className="thaw-glass rounded-2xl p-6">
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-wider text-ice-cyan">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                        <span>03 // NORMALIZED CUET SCORES (0 - 250 PER PAPER)</span>
+                      </div>
+                      <button 
+                        onClick=${handleReset}
+                        className="flex items-center gap-1 text-[11px] font-mono text-slate-400 hover:text-ice-cyan transition"
+                        title="Reset all values to baseline"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        <span>Reset</span>
+                      </button>
+                    </div>
+
+                    <!-- B.Sc. Qualifying Language Barrier -->
+                    ${activeCourse.requiresLanguageQualifying ? html`
+                      <div className="mb-6 p-4 rounded-xl bg-void-900/90 border border-white/10 relative overflow-hidden">
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <span className="font-mono text-xs font-bold text-white">Language Paper (List A)</span>
+                              <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-status-amber/20 text-status-amber border border-status-amber/30">
+                                QUALIFYING ONLY (NON-MERIT)
+                              </span>
+                            </div>
+                            <span className="text-xs text-slate-400 font-sans block mt-0.5">
+                              DU Rule: Min 30% (75/250 marks) required for B.Sc eligibility; excluded from merit sum.
+                            </span>
+                          </div>
+                          
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="number"
+                              min="0"
+                              max="250"
+                              value=${qualifyingLangScore}
+                              onChange=${(e) => setQualifyingLangScore(Math.min(250, Math.max(0, Number(e.target.value) || 0)))}
+                              className="w-16 bg-void-950 border border-white/20 rounded-lg px-2 py-1 text-right font-mono text-xs text-white focus:outline-none focus:border-ice-cyan"
+                            />
+                            <span className="font-mono text-xs text-slate-400">/ 250</span>
+                          </div>
+                        </div>
+
+                        <div className="mt-2 mb-2">
+                          <input
+                            type="range"
+                            min="0"
+                            max="250"
+                            value=${qualifyingLangScore}
+                            onChange=${(e) => setQualifyingLangScore(Number(e.target.value))}
+                            className="w-full"
+                          />
+                        </div>
+
+                        <div className="mt-2">
+                          ${qualifyingLangScore >= 75 ? html`
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-status-green/10 border border-status-green/30 font-mono text-[11px] text-status-green">
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                              <span>Passed Qualifying Criterion (>=30%)</span>
+                            </div>
+                          ` : html`
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-status-red/15 border border-status-red/40 font-mono text-[11px] text-status-red">
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                              <span>Language Disqualified (&lt;30% - Min 75 Required)</span>
+                            </div>
+                          `}
+                        </div>
+                      </div>
+                    ` : null}
+
+                    <!-- Merit Subjects Sliders -->
+                    <div className="space-y-5">
+                      ${(activeSubjectList || []).map((subjName, idx) => {
+                        const val = scores[idx] !== undefined ? scores[idx] : 200;
+                        return html`
+                          <div 
+                            key=${idx} 
+                            onMouseMove=${handleCardMouseMove}
+                            onMouseLeave=${handleCardMouseLeave}
+                            className="cursor-spotlight-card p-4 rounded-xl bg-void-900/70 border border-white/[0.08] hover:border-ice-cyan/30 transition-all duration-300"
+                          >
+                            <div className="flex items-center justify-between gap-3 mb-2">
+                              <div className="flex items-center gap-2">
+                                <span className="w-5 h-5 rounded bg-white/5 border border-white/10 font-mono text-[11px] flex items-center justify-center text-slate-400">
+                                  0${idx + 1}
+                                </span>
+                                <span className="font-sans text-sm font-semibold text-white">${subjName}</span>
+                              </div>
+
+                              <div className="flex items-center gap-2">
+                                <div className="hidden sm:flex items-center gap-1">
+                                  <button
+                                    onClick=${() => setScores(prev => ({ ...prev, [idx]: Math.max(0, val - 5) }))}
+                                    className="px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/10 font-mono text-[10px] text-slate-400 hover:text-white"
+                                  >
+                                    -5
+                                  </button>
+                                  <button
+                                    onClick=${() => setScores(prev => ({ ...prev, [idx]: Math.min(250, val + 5) }))}
+                                    className="px-1.5 py-0.5 rounded bg-white/5 hover:bg-white/10 font-mono text-[10px] text-slate-400 hover:text-white"
+                                  >
+                                    +5
+                                  </button>
+                                  <button
+                                    onClick=${() => setScores(prev => ({ ...prev, [idx]: 250 }))}
+                                    className="px-1.5 py-0.5 rounded bg-ice-cyan/10 hover:bg-ice-cyan/20 font-mono text-[10px] text-ice-cyan"
+                                  >
+                                    MAX
+                                  </button>
+                                </div>
+
+                                <input
+                                  type="number"
+                                  min="0"
+                                  max="250"
+                                  value=${val}
+                                  onChange=${(e) => {
+                                    const n = Math.min(250, Math.max(0, Number(e.target.value) || 0));
+                                    setScores(prev => ({ ...prev, [idx]: n }));
+                                  }}
+                                  className="w-16 bg-void-950 border border-white/20 rounded-lg px-2 py-1 text-right font-mono text-xs font-bold text-ice-cyan focus:outline-none focus:border-ice-cyan"
+                                />
+                                <span className="font-mono text-xs text-slate-500">/ 250</span>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                              <input
+                                type="range"
+                                min="0"
+                                max="250"
+                                value=${val}
+                                onChange=${(e) => {
+                                  const n = Number(e.target.value);
+                                  setScores(prev => ({ ...prev, [idx]: n }));
+                                }}
+                                className="w-full"
+                              />
+                            </div>
+
+                            <div className="flex justify-between font-mono text-[9px] text-slate-600 mt-1">
+                              <span>0</span>
+                              <span>125 (50%)</span>
+                              <span>250 (100%)</span>
+                            </div>
+                          </div>
+                        `;
+                      })}
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN: DYNAMIC VERDICT & TELEMETRY (5 COLS) -->
+                <div className="lg:col-span-5 sticky top-20 space-y-6">
+                  
+                  <div className=${`thaw-glass rounded-3xl p-7 relative overflow-hidden transition-all duration-500 ${
+                    isLanguageDisqualified
+                      ? "border-status-red/40 thaw-glow-red"
+                      : isQualified
+                        ? "border-status-green/40 thaw-glow-green"
+                        : "border-white/10"
+                  }`}>
+                    
+                    <div className="flex items-center justify-between pb-4 mb-6 border-b border-white/[0.08]">
+                      <span className="font-mono text-xs text-slate-400 tracking-widest uppercase">
+                        // VERDICT_TELEMETRY
+                      </span>
+                      <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-white/5 text-ice-cyan border border-white/10">
+                        ROUND_${selectedRound === "round1" ? "01" : selectedRound === "round2" ? "02" : "SPOT"}
+                      </span>
+                    </div>
+
+                    <div className="mb-6">
+                      <span className="font-mono text-xs text-slate-400 uppercase tracking-wider block mb-1">
+                        Calculated Merit Score
+                      </span>
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-mono text-4xl sm:text-5xl font-black text-white tracking-tight">
+                          ${totalScore.toFixed(2)}
+                        </span>
+                        <span className="font-mono text-base text-slate-400">
+                          / ${activeMaxMarks}
+                        </span>
+                      </div>
+                      <div className="font-mono text-xs text-ice-cyan mt-1">
+                        Normalized Aggregate: ${((totalScore / activeMaxMarks) * 100).toFixed(2)}%
+                      </div>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-void-900/80 border border-white/[0.08] mb-6 space-y-3">
+                      <div className="flex items-center justify-between font-mono text-xs">
+                        <span className="text-slate-400">DDUC Required Cutoff:</span>
+                        <span className="font-bold text-white">
+                          ${hasSeatAllocated ? targetCutoff.toFixed(4) : "No Seat Allocated"}
+                        </span>
+                      </div>
+
+                      <div className="flex items-center justify-between font-mono text-xs">
+                        <span className="text-slate-400">Active Category:</span>
+                        <span className="text-ice-white font-semibold">${CATEGORIES.find(c => c.id === selectedCategory)?.label}</span>
+                      </div>
+
+                      ${hasSeatAllocated ? html`
+                        <div className="pt-2 border-t border-white/[0.08] flex items-center justify-between">
+                          <span className="font-mono text-xs text-slate-400">Delta from Cutoff:</span>
+                          <span className=${`font-mono text-sm font-bold ${delta >= 0 ? "text-status-green" : "text-status-red"}`}>
+                            ${delta >= 0 ? `+${delta.toFixed(2)} marks` : `${delta.toFixed(2)} marks`}
+                          </span>
+                        </div>
+                      ` : null}
+                    </div>
+
+                    <!-- Dynamic Status Badge -->
+                    <div className="mb-6">
+                      ${isLanguageDisqualified ? html`
+                        <div className="p-4 rounded-2xl bg-status-red/10 border border-status-red/40 text-center">
+                          <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-status-red uppercase tracking-wider mb-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            <span>DISQUALIFIED (LANGUAGE &lt; 30%)</span>
+                          </div>
+                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                            University of Delhi requires candidate to score minimum 30% (75/250) in Language paper for Science programs.
+                          </p>
+                        </div>
+                      ` : !hasSeatAllocated ? html`
+                        <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                          <div className="font-mono text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                            NO SEAT ALLOCATED IN THIS ROUND
+                          </div>
+                          <p className="text-xs text-slate-400 font-sans">
+                            No candidate was allocated in DDUC under ${selectedCategory} quota for this specific round.
+                          </p>
+                        </div>
+                      ` : delta >= 0 ? html`
+                        <div className="p-4 rounded-2xl bg-status-green/10 border border-status-green/40 text-center">
+                          <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-status-green uppercase tracking-wider mb-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                            <span>QUALIFIED // ADMISSION LIKELY</span>
+                          </div>
+                          <p className="text-xs text-slate-200 font-sans leading-relaxed">
+                            Your merit score exceeds the DDUC ${selectedRound === "round1" ? "Round 1" : selectedRound === "round2" ? "Round 2" : "Spot"} closing cutoff by <strong className="text-status-green">+${delta.toFixed(2)} marks</strong>. High probability of seat allotment!
+                          </p>
+                        </div>
+                      ` : html`
+                        <div className="p-4 rounded-2xl bg-status-red/10 border border-status-red/30 text-center">
+                          <div className="inline-flex items-center gap-1.5 font-mono text-xs font-bold text-status-red uppercase tracking-wider mb-1">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                            <span>AWAY FROM CUTOFF</span>
+                          </div>
+                          <p className="text-xs text-slate-300 font-sans leading-relaxed">
+                            Your score is <strong className="text-status-red">${Math.abs(delta).toFixed(2)} marks</strong> below the closing threshold for this round. Consider subsequent rounds or related streams.
+                          </p>
+                        </div>
+                      `}
+                    </div>
+
+                    <!-- Multi-Round Comparative Matrix -->
+                    <div className="pt-4 border-t border-white/[0.08] mb-6">
+                      <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block mb-2.5">
+                        // HISTORICAL DDUC CUTOFF MATRIX (${selectedCategory})
+                      </span>
+                      <div className="grid grid-cols-3 gap-2 text-center font-mono">
+                        <div className="p-2 rounded-xl bg-void-900/60 border border-white/[0.05]">
+                          <div className="text-[10px] text-slate-400">R1 Closing</div>
+                          <div className="text-xs font-bold text-white mt-0.5">
+                            ${(activeCourse?.round1 && activeCourse.round1[selectedCategory] != null) ? Number(activeCourse.round1[selectedCategory]).toFixed(1) : "—"}
+                          </div>
+                        </div>
+                        <div className="p-2 rounded-xl bg-void-900/60 border border-white/[0.05]">
+                          <div className="text-[10px] text-slate-400">R2 Closing</div>
+                          <div className="text-xs font-bold text-white mt-0.5">
+                            ${(activeCourse?.round2 && activeCourse.round2[selectedCategory] != null) ? Number(activeCourse.round2[selectedCategory]).toFixed(1) : "—"}
+                          </div>
+                        </div>
+                        <div className="p-2 rounded-xl bg-void-900/60 border border-white/[0.05]">
+                          <div className="text-[10px] text-slate-400">Spot Mop-Up</div>
+                          <div className="text-xs font-bold text-white mt-0.5">
+                            ${(activeCourse?.spot && activeCourse.spot[selectedCategory] != null) ? Number(activeCourse.spot[selectedCategory]).toFixed(1) : "—"}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Action Button -->
+                    <div className="flex gap-2">
+                      <button
+                        onClick=${handleCopyReport}
+                        className="flex-1 py-3 px-4 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-xs font-mono font-semibold text-white transition flex items-center justify-center gap-2 shadow-sm active:scale-95"
+                      >
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span>${copiedToast ? "Copied Telemetry Report!" : "Copy Official Verdict"}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Institutional Info Card -->
+                  <div className="thaw-glass rounded-2xl p-5 border border-white/[0.06] text-xs font-mono text-slate-400 space-y-2">
+                    <div className="text-ice-white font-semibold flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-ice-cyan"></span>
+                      <span>DEEN DAYAL UPADHYAYA COLLEGE</span>
+                    </div>
+                    <p className="text-slate-400 font-sans text-[11px] leading-relaxed">
+                      Sector-3, Dwarka, New Delhi. NAAC 'A' Grade Accredited • University of Delhi. Seat allocations governed by CSAS 2026 tie-breaking criteria.
+                    </p>
+                  </div>
+
+                </div>
+
+              </div>
+            </main>
+
+            <!-- FOOTER BAR -->
+            <footer className="border-t border-white/[0.06] py-6 px-6 lg:px-12 bg-void-950 font-mono text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div>
+                © 2026 Deen Dayal Upadhyaya College • University of Delhi
+              </div>
+              <div className="flex items-center gap-4 text-[11px]">
+                <span>NTA_CUET_COMPLIANT</span>
+                <span>•</span>
+                <a href="./index.html" className="text-ice-cyan hover:underline">
+                  3D Architectural Campus
+                </a>
+              </div>
+            </footer>
+
+            <!-- DU RULES MODAL -->
+            ${showInfoModal ? html`
+              <div className="fixed inset-0 z-50 bg-void-950/80 backdrop-blur-xl flex items-center justify-center p-4">
+                <div className="thaw-glass max-w-lg w-full rounded-3xl p-6 sm:p-8 border border-white/20 relative max-h-[85vh] overflow-y-auto">
+                  <button
+                    onClick=${() => setShowInfoModal(false)}
+                    className="absolute top-6 right-6 p-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                  </button>
+
+                  <div className="flex items-center gap-2 font-mono text-xs text-ice-cyan uppercase tracking-widest mb-2">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>// DU ADMISSION ARCHITECTURE</span>
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-white mb-4">
+                    CUET DU CSAS Rules & Criteria
+                  </h3>
+
+                  <div className="space-y-4 font-sans text-xs text-slate-300 leading-relaxed">
+                    <div className="p-3.5 rounded-xl bg-void-900 border border-white/10">
+                      <h4 className="font-mono text-xs font-bold text-ice-cyan uppercase mb-1">1. Science 30% Qualifying Rule</h4>
+                      <p>For B.Sc. (Hons) Physics, Chemistry, Electronics, Botany, Zoology, and Life Science, the language score is NOT added to the merit total. However, candidate MUST obtain at least 30% (75/250) in any one language from List A.</p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-void-900 border border-white/10">
+                      <h4 className="font-mono text-xs font-bold text-ice-cyan uppercase mb-1">2. 1,000 vs 750 Max Marks Scale</h4>
+                      <p>Courses requiring 1 Language + 3 Domain subjects (e.g. B.Com Hons, B.Sc Computer Science, BA English) are calculated out of 1,000 marks (4 x 250). Courses requiring 3 domain subjects (e.g. B.Sc Physics, Chemistry) or BMS are scored out of 750 marks (3 x 250).</p>
+                    </div>
+
+                    <div className="p-3.5 rounded-xl bg-void-900 border border-white/10">
+                      <h4 className="font-mono text-xs font-bold text-ice-cyan uppercase mb-1">3. Normalization & Tie-Breaking</h4>
+                      <p>In case of identical CUET aggregates, DU CSAS applies tie-breakers based on Class 12th board marks, age, and alphabet priority.</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-white/10 flex justify-end">
+                    <button
+                      onClick=${() => setShowInfoModal(false)}
+                      className="px-5 py-2 rounded-xl bg-white text-void-950 font-mono text-xs font-bold hover:bg-slate-200 transition"
+                    >
+                      Acknowledge
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ` : null}
+
+          </div>
+        `;
+      }
+
+      // Safe mount to #root using React 18 createRoot
+      try {
+        const rootContainer = document.getElementById('root');
+        if (ReactDOM.createRoot) {
+          const root = ReactDOM.createRoot(rootContainer);
+          root.render(React.createElement(MainApp));
+        } else {
+          ReactDOM.render(React.createElement(MainApp), rootContainer);
+        }
+      } catch (err) {
+        console.error("Mount error in CUET SPA:", err);
+        const errBox = document.getElementById('error-fallback');
+        const errMsg = document.getElementById('error-message');
+        if (errBox && errMsg) {
+          errMsg.textContent = err.stack || err.message;
+          errBox.classList.remove('hidden');
+        }
+      }
+    })();
+  </script>
+</body>
+</html>
