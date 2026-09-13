@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initLoadingSequence();
   initThreeScene();
   initDOMComponents();
-  initCalculator();
 });
 
 // 1. Loading Progress Simulation
@@ -561,27 +560,14 @@ function initModals() {
     }
   });
 
-  // Calculator Modal Open/Close
-  const calcModal = document.getElementById("calculator-modal");
+  // Pointer hover physics for metallic titanium CUET Cutoff action buttons
   const openCalcBtn = document.getElementById("open-calculator-btn");
   const openCalcMobileBtn = document.getElementById("open-calculator-mobile-btn");
-  const openCalcCta = document.getElementById("open-calculator-cta");
-  const heroCutoffBtn = document.getElementById("hero-cutoff-btn");
-  const closeCalcBtn = document.getElementById("close-calc-modal-btn");
 
-  [openCalcBtn, openCalcMobileBtn, openCalcCta, heroCutoffBtn].forEach((btn) => {
-    if (btn) {
-      btn.addEventListener("click", () => {
-        calcModal.classList.remove("hidden");
-        updateCalculatorView();
-      });
-    }
-  });
-
-  // Pointer hover physics for metallic titanium button
-  if (openCalcBtn) {
-    openCalcBtn.addEventListener("pointermove", (e) => {
-      const rect = openCalcBtn.getBoundingClientRect();
+  [openCalcBtn, openCalcMobileBtn].forEach((btn) => {
+    if (!btn) return;
+    btn.addEventListener("pointermove", (e) => {
+      const rect = btn.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       const centerX = rect.width / 2;
@@ -591,144 +577,23 @@ function initModals() {
       const rx = -((y - centerY) / centerY) * 6;
       const ry = ((x - centerX) / centerX) * 6;
 
-      openCalcBtn.style.setProperty("--spec-x", `${(x / rect.width) * 100}%`);
-      openCalcBtn.style.setProperty("--spec-y", `${(y / rect.height) * 100}%`);
-      openCalcBtn.style.setProperty("--tx", `${tx.toFixed(2)}px`);
-      openCalcBtn.style.setProperty("--ty", `${ty.toFixed(2)}px`);
-      openCalcBtn.style.setProperty("--rx", `${rx.toFixed(2)}deg`);
-      openCalcBtn.style.setProperty("--ry", `${ry.toFixed(2)}deg`);
+      btn.style.setProperty("--spec-x", `${(x / rect.width) * 100}%`);
+      btn.style.setProperty("--spec-y", `${(y / rect.height) * 100}%`);
+      btn.style.setProperty("--tx", `${tx.toFixed(2)}px`);
+      btn.style.setProperty("--ty", `${ty.toFixed(2)}px`);
+      btn.style.setProperty("--rx", `${rx.toFixed(2)}deg`);
+      btn.style.setProperty("--ry", `${ry.toFixed(2)}deg`);
     });
 
-    openCalcBtn.addEventListener("pointerleave", () => {
-      openCalcBtn.style.setProperty("--tx", "0px");
-      openCalcBtn.style.setProperty("--ty", "0px");
-      openCalcBtn.style.setProperty("--rx", "0deg");
-      openCalcBtn.style.setProperty("--ry", "0deg");
-      openCalcBtn.style.setProperty("--spec-x", "50%");
-      openCalcBtn.style.setProperty("--spec-y", "50%");
-    });
-  }
-
-  if (closeCalcBtn) {
-    closeCalcBtn.addEventListener("click", () => calcModal.classList.add("hidden"));
-  }
-  if (calcModal) {
-    calcModal.addEventListener("click", (e) => {
-      if (e.target === calcModal) calcModal.classList.add("hidden");
-    });
-  }
-}
-
-// 10. CUET Cutoff & Merit Calculator Logic
-let selectedCourseId = coursesCatalog[0].id;
-let selectedCategory = "UR";
-let userCUETScore = 730;
-
-function initCalculator() {
-  const courseSelect = document.getElementById("calc-course-select");
-  const categoryContainer = document.getElementById("calc-category-tabs");
-  const slider = document.getElementById("calc-score-slider");
-  const evalBtn = document.getElementById("calc-eval-btn") || document.getElementById("calc-confetti-btn");
-
-  if (!courseSelect || !categoryContainer || !slider) return;
-
-  // Populate course dropdown
-  courseSelect.innerHTML = coursesCatalog
-    .map((c) => `<option value="${c.id}">${c.name} (Max: ${c.maxMarks})</option>`)
-    .join("");
-
-  courseSelect.addEventListener("change", (e) => {
-    selectedCourseId = e.target.value;
-    const course = coursesCatalog.find((c) => c.id === selectedCourseId);
-    slider.max = course.maxMarks;
-    document.getElementById("calc-max-label").textContent = course.maxMarks;
-    if (userCUETScore > course.maxMarks) {
-      userCUETScore = Math.floor(course.maxMarks * 0.9);
-      slider.value = userCUETScore;
-    }
-    updateCalculatorView();
-  });
-
-  // Populate category buttons
-  const categories = ["UR", "OBC", "SC", "ST", "EWS", "PwD"];
-  categoryContainer.innerHTML = categories
-    .map(
-      (cat, idx) => `
-      <button class="calc-cat-btn py-1.5 rounded-lg text-xs font-semibold border transition ${
-        idx === 0
-          ? "bg-red-600 text-white border-red-500"
-          : "bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500"
-      }" data-cat="${cat}">
-        ${cat}
-      </button>
-    `
-    )
-    .join("");
-
-  categoryContainer.querySelectorAll(".calc-cat-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      selectedCategory = btn.getAttribute("data-cat");
-      categoryContainer.querySelectorAll(".calc-cat-btn").forEach((b) => {
-        b.className =
-          "calc-cat-btn py-1.5 rounded-lg text-xs font-semibold border transition bg-slate-800 text-slate-300 border-slate-700 hover:border-slate-500";
-      });
-      btn.className =
-        "calc-cat-btn py-1.5 rounded-lg text-xs font-semibold border transition bg-red-600 text-white border-red-500";
-      updateCalculatorView();
-      audioAmbience.playChime();
+    btn.addEventListener("pointerleave", () => {
+      btn.style.setProperty("--tx", "0px");
+      btn.style.setProperty("--ty", "0px");
+      btn.style.setProperty("--rx", "0deg");
+      btn.style.setProperty("--ry", "0deg");
+      btn.style.setProperty("--spec-x", "50%");
+      btn.style.setProperty("--spec-y", "50%");
     });
   });
-
-  // Slider change
-  slider.addEventListener("input", (e) => {
-    userCUETScore = parseInt(e.target.value, 10);
-    updateCalculatorView();
-  });
-
-  // Clean admission feasibility evaluation trigger (zero celebration/confetti FX)
-  if (evalBtn) {
-    evalBtn.addEventListener("click", () => {
-      updateCalculatorView();
-      if (audioAmbience && audioAmbience.playChime) {
-        audioAmbience.playChime();
-      }
-    });
-  }
-
-  updateCalculatorView();
-}
-
-function updateCalculatorView() {
-  const res = calculateEligibility(selectedCourseId, selectedCategory, userCUETScore);
-  if (!res) return;
-
-  document.getElementById("calc-score-display").textContent = `${res.userScore} / ${res.maxMarks} (${res.percentage}%)`;
-
-  const resultBox = document.getElementById("calc-result-box");
-  resultBox.innerHTML = `
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <div>
-        <span class="text-[10px] font-mono uppercase text-slate-400">Eligibility Verdict</span>
-        <h4 class="text-base font-bold ${res.statusColor}">${res.status}</h4>
-      </div>
-      <div class="text-right">
-        <span class="text-[10px] text-slate-400">Closing Cutoff</span>
-        <span class="block text-xs font-mono font-bold text-white">${res.targetCutoff} (${selectedCategory})</span>
-      </div>
-    </div>
-
-    <p class="text-xs text-slate-300 leading-relaxed mb-4">${res.message}</p>
-
-    <div class="p-3 rounded-xl bg-slate-950/60 border border-white/5 mb-4">
-      <div class="text-[10px] font-semibold uppercase text-slate-400 mb-1">Mandatory DU Subject Combination</div>
-      <div class="text-xs text-slate-200 leading-normal">${res.subjectCriteria}</div>
-    </div>
-
-    <div class="flex items-center justify-between text-[11px] text-slate-400 font-mono">
-      <span>Intake Capacity: <strong class="text-white">${res.intake} Seats</strong></span>
-      <span>Historical Delta: <strong class="${res.diff >= 0 ? 'text-emerald-400' : 'text-rose-400'}">${res.diff >= 0 ? '+' : ''}${res.diff} pts</strong></span>
-    </div>
-  `;
 }
 
 // 11. Active Section HUD Update

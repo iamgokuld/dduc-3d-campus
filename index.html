@@ -131,12 +131,12 @@
           <i data-lucide="volume-x" id="audio-icon" class="w-4 h-4"></i>
         </button>
 
-        <!-- Metallic Titanium CUET Cutoff Action Button -->
-        <button id="open-calculator-btn" title="Open CUET DU Merit & Cutoff Calculator" class="btn-metallic-titanium focus:outline-none focus:ring-2 focus:ring-slate-400/40">
+        <!-- Metallic Titanium CUET Cutoff Action Link -->
+        <a href="./calculator.html" id="open-calculator-btn" title="Open CUET DU Merit & Cutoff Calculator" class="btn-metallic-titanium focus:outline-none focus:ring-2 focus:ring-slate-400/40">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span>
           <span>CUET Cutoff</span>
           <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
-        </button>
+        </a>
 
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" class="h-9 w-9 lg:hidden flex items-center justify-center rounded-xl bg-slate-900/80 text-slate-300 hover:text-white border border-slate-700/60 transition active:scale-95 focus:outline-none focus:ring-2 focus:ring-white/20 cursor-pointer">
@@ -153,13 +153,13 @@
       <a href="#placements" class="px-3 py-2 text-xs font-medium text-slate-200 hover:bg-white/5 rounded-lg transition">Placements & Blueprint</a>
       <button id="open-tour-mobile-btn" class="text-left px-3 py-2 text-xs font-medium text-red-400 hover:bg-white/5 rounded-lg transition">360 Virtual Tour</button>
       <div class="pt-2 mt-1 border-t border-white/10 flex flex-col gap-2">
-        <button id="open-calculator-mobile-btn" class="btn-metallic-titanium w-full justify-between focus:outline-none focus:ring-2 focus:ring-slate-400/40">
+        <a href="./calculator.html" id="open-calculator-mobile-btn" class="btn-metallic-titanium w-full justify-between focus:outline-none focus:ring-2 focus:ring-slate-400/40">
           <span class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.9)]"></span>
             <span>CUET Cutoff</span>
           </span>
           <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
-        </button>
+        </a>
       </div>
     </div>
   </header>
@@ -212,10 +212,10 @@
               <i data-lucide="view" class="w-4 h-4 text-cyan-400"></i>
               <span>360° Virtual Tour</span>
             </button>
-            <button id="hero-cutoff-btn" class="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-amber-400 font-semibold text-sm border border-amber-500/30 transition flex items-center gap-2">
-              <i data-lucide="sparkles" class="w-4 h-4"></i>
-              <span>Admissions 2025</span>
-            </button>
+            <a href="./calculator.html" id="hero-cutoff-btn" class="px-6 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-amber-400 font-semibold text-sm border border-amber-500/30 transition flex items-center gap-2">
+              <i data-lucide="calculator" class="w-4 h-4"></i>
+              <span>Admissions 2026</span>
+            </a>
           </div>
 
           <!-- Quick Metrics Bar -->
@@ -357,10 +357,10 @@
                 Enter your CUET percentile or raw score across Computer Science, BMS, B.Com (Hons), and Science streams to receive instant round-by-round allocation probabilities.
               </p>
             </div>
-            <button id="open-calculator-cta" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm shadow-xl shadow-red-900/50 whitespace-nowrap transition flex items-center gap-2">
+            <a href="./calculator.html" id="open-calculator-cta" class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-bold text-sm shadow-xl shadow-red-900/50 whitespace-nowrap transition flex items-center gap-2">
               <i data-lucide="calculator" class="w-4 h-4"></i>
               <span>Launch Calculator</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -425,75 +425,7 @@
 
   </main>
 
-  <!-- MODAL: CUET CUTOFF & ELIGIBILITY CALCULATOR -->
-  <div id="calculator-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="glass-panel w-full max-w-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      <!-- Close Button -->
-      <button id="close-calc-modal-btn" class="absolute top-6 right-6 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition">
-        <i data-lucide="x" class="w-4 h-4"></i>
-      </button>
 
-      <div class="flex items-center gap-3 mb-2">
-        <div class="w-10 h-10 rounded-xl bg-red-600 flex items-center justify-center text-white">
-          <i data-lucide="calculator" class="w-5 h-5"></i>
-        </div>
-        <div>
-          <h3 class="text-lg font-bold text-white leading-tight">CUET Merit & Cutoff Estimator</h3>
-          <p class="text-xs text-slate-400">Deen Dayal Upadhyaya College • University of Delhi</p>
-        </div>
-      </div>
-
-      <p class="text-xs text-slate-300 mb-6 leading-relaxed">
-        Select your desired degree program, reservation category, and CUET normalized score to calculate your allocation probabilities based on previous CSAS merit rounds.
-      </p>
-
-      <!-- Calculator Form -->
-      <div class="space-y-4 mb-6">
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Select Course / Program</label>
-          <select id="calc-course-select" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-red-500">
-            <!-- Populated via JS -->
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-300 mb-1.5 uppercase tracking-wider">Admission Category</label>
-          <div id="calc-category-tabs" class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
-            <!-- Tabs populated via JS -->
-          </div>
-        </div>
-
-        <div>
-          <div class="flex items-center justify-between mb-1.5">
-            <label class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Your CUET Score</label>
-            <span id="calc-score-display" class="text-xs font-mono font-bold text-red-400">710 / 800</span>
-          </div>
-          <input type="range" id="calc-score-slider" min="200" max="800" value="710" step="1" class="w-full h-2 bg-slate-800 rounded-lg cursor-pointer" />
-          <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
-            <span>200</span>
-            <span>Target Threshold</span>
-            <span id="calc-max-label">800</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Result Card -->
-      <div id="calc-result-box" class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 mb-6">
-        <!-- Injected via JS -->
-      </div>
-
-      <div class="flex justify-between items-center gap-3">
-        <a href="./calculator.html" class="text-xs text-cyan-400 hover:text-cyan-300 font-mono flex items-center gap-1.5 transition">
-          <span>Open Dedicated Full SPA</span>
-          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
-        </a>
-        <button id="calc-eval-btn" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold border border-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
-          <span>Check Admission Feasibility</span>
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- MODAL: 360 VIRTUAL TOUR & LANDMARK DETAIL -->
   <div id="tour-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
